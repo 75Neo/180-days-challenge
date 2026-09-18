@@ -1,0 +1,1817 @@
+{
+  "fundamentals": [
+    "big-o-notation",
+    "time-space-complexity",
+    "ram-model-va-chi-phi",
+    "thuat-toan-moi-truong-phat-trien",
+    "chieu-du-lieu-va-tinh-toan",
+    "thiet-ke-va-kiem-chung-thuat-toan",
+    "p-np-va-do-kho",
+    "de-quy",
+    "giai-thuat-ngau-nhien-va-do-chinh-xac",
+    "nguyen-ly-thiet-ke-huong-doi-tuong",
+    "nhap-mon-design-patterns"
+  ],
+  "challenges": [
+    {
+      "day": 1,
+      "slug": "mang-va-danh-sach",
+      "title": "Mảng, vector và list: thao tác cơ bản và độ phức tạp",
+      "category": "data-structure",
+      "difficulty": "de",
+      "tags": ["array", "vector"],
+      "prereqs": ["thuat-toan-moi-truong-phat-trien", "big-o-notation"],
+      "minutes": 45
+    },
+    {
+      "day": 2,
+      "slug": "linked-list",
+      "title": "Linked list đơn, đôi và so sánh với mảng",
+      "category": "data-structure",
+      "difficulty": "de",
+      "tags": ["linked-list"],
+      "prereqs": ["big-o-notation", "time-space-complexity"],
+      "minutes": 45
+    },
+    {
+      "day": 3,
+      "slug": "stack-va-queue",
+      "title": "Stack, queue, deque: LIFO, FIFO và ứng dụng",
+      "category": "data-structure",
+      "difficulty": "de",
+      "tags": ["stack", "queue"],
+      "prereqs": ["big-o-notation"],
+      "minutes": 45
+    },
+    {
+      "day": 4,
+      "slug": "dictionary-va-set",
+      "title": "Dictionary, set và ý tưởng băm",
+      "category": "data-structure",
+      "difficulty": "de",
+      "tags": ["hash-table"],
+      "prereqs": ["big-o-notation", "time-space-complexity"],
+      "minutes": 45
+    },
+    {
+      "day": 5,
+      "slug": "cay-va-bst",
+      "title": "Cây và binary search tree: thuật ngữ và bất biến",
+      "category": "data-structure",
+      "difficulty": "de",
+      "tags": ["tree", "bst"],
+      "prereqs": ["big-o-notation", "de-quy"],
+      "minutes": 45
+    },
+    {
+      "day": 6,
+      "slug": "de-quy-thuc-hanh",
+      "title": "Thực hành đệ quy: base case, trace và memo",
+      "category": "algorithm",
+      "difficulty": "de",
+      "tags": ["recursion"],
+      "prereqs": ["de-quy", "time-space-complexity"],
+      "minutes": 45
+    },
+    {
+      "day": 7,
+      "slug": "sap-xep-co-ban",
+      "title": "Bộ ba sắp xếp O(n²): bubble, selection, insertion",
+      "category": "algorithm",
+      "difficulty": "de",
+      "tags": ["sorting"],
+      "prereqs": ["big-o-notation", "time-space-complexity"],
+      "minutes": 90
+    },
+    {
+      "day": 8,
+      "slug": "sap-xep-hieu-qua",
+      "title": "Sắp xếp hiệu quả: merge, shell, quick và cách chọn",
+      "category": "algorithm",
+      "difficulty": "de",
+      "tags": ["sorting"],
+      "prereqs": ["big-o-notation", "de-quy"],
+      "minutes": 90
+    },
+    {
+      "day": 9,
+      "slug": "tim-kiem-co-ban",
+      "title": "Tìm kiếm: linear, binary và interpolation",
+      "category": "algorithm",
+      "difficulty": "de",
+      "tags": ["searching"],
+      "prereqs": ["big-o-notation"],
+      "minutes": 60
+    },
+    {
+      "day": 10,
+      "slug": "ma-tran-va-du-lieu-bang",
+      "title": "Ma trận, Series và DataFrame trong thuật toán",
+      "category": "data-structure",
+      "difficulty": "de",
+      "tags": ["matrix"],
+      "prereqs": ["big-o-notation", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 45
+    },
+    {
+      "day": 11,
+      "slug": "brute-force-va-greedy",
+      "title": "Brute-force và greedy nhập môn qua TSP",
+      "category": "algorithm",
+      "difficulty": "de",
+      "tags": ["brute-force", "greedy"],
+      "prereqs": ["p-np-va-do-kho", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 12,
+      "slug": "quy-hoach-dong-nhap-mon",
+      "title": "Quy hoạch động: bài toán con gối nhau và memo",
+      "category": "algorithm",
+      "difficulty": "de",
+      "tags": ["dp"],
+      "prereqs": ["de-quy", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 13,
+      "slug": "priority-queue-va-heap",
+      "title": "Priority queue và binary heap: API và biểu diễn mảng",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["priority-queue", "heap"],
+      "prereqs": ["big-o-notation", "thuat-toan-moi-truong-phat-trien"],
+      "minutes": 60
+    },
+    {
+      "day": 14,
+      "slug": "heap-operations",
+      "title": "Thao tác heap: BubbleUp, PushDown, Heapify, Top, Update",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["heap"],
+      "prereqs": ["big-o-notation", "time-space-complexity"],
+      "minutes": 60
+    },
+    {
+      "day": 15,
+      "slug": "d-ary-heap-va-topk",
+      "title": "d-ary heap, branching factor và bài toán top-K",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["heap", "top-k"],
+      "prereqs": ["big-o-notation", "ram-model-va-chi-phi"],
+      "minutes": 60
+    },
+    {
+      "day": 16,
+      "slug": "ma-huffman",
+      "title": "Mã Huffman: nén tham lam bằng heap",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["greedy", "compression"],
+      "prereqs": ["big-o-notation", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 17,
+      "slug": "treap-co-ban",
+      "title": "Treap: BST kết hợp heap và phép xoay",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["treap", "bst"],
+      "prereqs": ["big-o-notation", "de-quy", "giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 18,
+      "slug": "treap-nang-cao",
+      "title": "Treap nâng cao: insert, delete và cân bằng kỳ vọng",
+      "category": "data-structure",
+      "difficulty": "kho",
+      "tags": ["treap"],
+      "prereqs": ["big-o-notation", "giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 19,
+      "slug": "bo-loc-bloom",
+      "title": "Bloom filter: cơ chế bit, false positive và ứng dụng",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["bloom-filter"],
+      "prereqs": ["big-o-notation", "giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 20,
+      "slug": "disjoint-set-co-ban",
+      "title": "Disjoint set: bài toán distinct subsets và cài đặt naive",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["disjoint-set"],
+      "prereqs": ["big-o-notation", "time-space-complexity"],
+      "minutes": 45
+    },
+    {
+      "day": 21,
+      "slug": "union-find-va-kruskal",
+      "title": "Union-Find tối ưu và Kruskal tìm cây khung",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["disjoint-set", "mst"],
+      "prereqs": ["big-o-notation", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 22,
+      "slug": "trie-co-ban",
+      "title": "Trie: nút, cạnh, search, insert, remove, prefix",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["trie"],
+      "prereqs": ["big-o-notation", "time-space-complexity"],
+      "minutes": 60
+    },
+    {
+      "day": 23,
+      "slug": "radix-trie-va-ung-dung",
+      "title": "Radix trie nén cạnh và ứng dụng autocomplete, spell-check",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["radix-trie"],
+      "prereqs": ["big-o-notation"],
+      "minutes": 60
+    },
+    {
+      "day": 24,
+      "slug": "hash-table-nang-cao",
+      "title": "Hash table nâng cao: hàm băm và xử lý xung đột",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["hash-table"],
+      "prereqs": ["big-o-notation", "ram-model-va-chi-phi"],
+      "minutes": 60
+    },
+    {
+      "day": 25,
+      "slug": "lru-cache",
+      "title": "LRU cache: thứ tự thời gian và đuổi dữ liệu cũ",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["cache"],
+      "prereqs": ["big-o-notation", "time-space-complexity"],
+      "minutes": 60
+    },
+    {
+      "day": 26,
+      "slug": "lfu-va-chien-luoc-cache",
+      "title": "LFU, freshness, async và khóa đồng bộ trong cache",
+      "category": "data-structure",
+      "difficulty": "kho",
+      "tags": ["cache", "concurrency"],
+      "prereqs": ["time-space-complexity", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 27,
+      "slug": "mini-project-sort",
+      "title": "Mini project 1: benchmark sắp xếp và cấu trúc cơ bản",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["capstone"],
+      "prereqs": ["big-o-notation", "ram-model-va-chi-phi"],
+      "minutes": 120
+    },
+    {
+      "day": 28,
+      "slug": "do-thi-va-bfs",
+      "title": "Biểu diễn đồ thị và BFS tìm đường ngắn nhất",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["graph", "bfs"],
+      "prereqs": ["big-o-notation", "thuat-toan-moi-truong-phat-trien"],
+      "minutes": 60
+    },
+    {
+      "day": 29,
+      "slug": "dfs-va-so-sanh",
+      "title": "DFS, ngăn xếp và so sánh với BFS",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["graph", "dfs"],
+      "prereqs": ["de-quy", "time-space-complexity"],
+      "minutes": 60
+    },
+    {
+      "day": 30,
+      "slug": "dijkstra-voi-heap",
+      "title": "Dijkstra với heap cho đồ thị có trọng số",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["graph", "shortest-path"],
+      "prereqs": ["big-o-notation"],
+      "minutes": 60
+    },
+    {
+      "day": 31,
+      "slug": "a-star-va-prim",
+      "title": "A* heuristic và Prim cây khung nhỏ nhất",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["graph", "mst"],
+      "prereqs": ["big-o-notation", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 32,
+      "slug": "centrality-va-egonet",
+      "title": "Egonet và centrality: degree, betweenness, closeness, eigenvector",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["graph", "sna"],
+      "prereqs": ["thuat-toan-moi-truong-phat-trien"],
+      "minutes": 60
+    },
+    {
+      "day": 33,
+      "slug": "gian-lan-watchtower",
+      "title": "Case study: phát hiện gian lận bằng SNA và watchtower",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["graph", "fraud"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 34,
+      "slug": "pagerank",
+      "title": "PageRank: lan truyền điểm số và damping",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["pagerank", "graph"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 35,
+      "slug": "quy-hoach-tuyen-tinh",
+      "title": "Quy hoạch tuyến tính: hàm mục tiêu, ràng buộc, capacity planning",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["linear-programming"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 36,
+      "slug": "quy-hoach-dong-nang-cao",
+      "title": "DP nâng cao: overlapping, tái cấu trúc nghiệm",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["dp"],
+      "prereqs": ["de-quy", "p-np-va-do-kho"],
+      "minutes": 60
+    },
+    {
+      "day": 37,
+      "slug": "tsp-ba-chien-luoc",
+      "title": "TSP dưới 3 chiến lược: brute-force, greedy, DP",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["tsp"],
+      "prereqs": ["p-np-va-do-kho", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 38,
+      "slug": "kd-tree-co-ban",
+      "title": "k-d tree: luân phiên chiều, bất biến và cân bằng",
+      "category": "data-structure",
+      "difficulty": "trung-binh",
+      "tags": ["kd-tree"],
+      "prereqs": ["big-o-notation", "de-quy"],
+      "minutes": 60
+    },
+    {
+      "day": 39,
+      "slug": "kd-tree-nang-cao",
+      "title": "Nearest neighbor và region search trên k-d tree",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["kd-tree"],
+      "prereqs": ["big-o-notation"],
+      "minutes": 60
+    },
+    {
+      "day": 40,
+      "slug": "nn-search-va-rtree",
+      "title": "Bài toán nearest neighbor và R-tree indexing",
+      "category": "data-structure",
+      "difficulty": "kho",
+      "tags": ["nn-search", "r-tree"],
+      "prereqs": ["big-o-notation", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 41,
+      "slug": "ss-tree-similarity",
+      "title": "SS-tree và similarity search gần đúng cho ảnh",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["ss-tree"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan", "giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 42,
+      "slug": "ung-dung-nn-search",
+      "title": "Ứng dụng NN: nearest hub, giảm màu ảnh, hạt vật lý",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["nn-search"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 45
+    },
+    {
+      "day": 43,
+      "slug": "kmeans",
+      "title": "K-means: khởi tạo, hội tụ và curse of dimensionality",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["clustering"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 44,
+      "slug": "dbscan",
+      "title": "DBSCAN: density-reachable, lõi, biên, nhiễu",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["clustering"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 45,
+      "slug": "optics-phan-cap",
+      "title": "OPTICS và phân cụm phân cấp",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["clustering"],
+      "prereqs": ["big-o-notation"],
+      "minutes": 60
+    },
+    {
+      "day": 46,
+      "slug": "danh-gia-clustering",
+      "title": "Đánh giá clustering: silhouette và diễn giải",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["clustering"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 45
+    },
+    {
+      "day": 47,
+      "slug": "mapreduce-co-ban",
+      "title": "MapReduce: map, reduce qua ví dụ Donald Duck",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["mapreduce"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 48,
+      "slug": "mapreduce-kmeans-canopy",
+      "title": "MapReduce cho K-means và canopy clustering",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["mapreduce", "clustering"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 49,
+      "slug": "mapreduce-dbscan",
+      "title": "MapReduce DBSCAN và khởi tạo centroid",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["mapreduce"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 50,
+      "slug": "mini-project-graph",
+      "title": "Mini project 2: tuyến giao hàng BFS, DFS, Dijkstra",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["big-o-notation", "ram-model-va-chi-phi"],
+      "minutes": 120
+    },
+    {
+      "day": 51,
+      "slug": "unsupervised-tong-quan",
+      "title": "Học không giám sát: vòng đời, khoảng cách, phân khúc",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["ml"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan", "giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 52,
+      "slug": "luat-gio-hang",
+      "title": "Luật giỏ hàng: Apriori và FP-growth",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["ml"],
+      "prereqs": ["big-o-notation"],
+      "minutes": 60
+    },
+    {
+      "day": 53,
+      "slug": "giam-chieu-pca",
+      "title": "Giảm chiều PCA: vector riêng và PC1, PC2",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["ml"],
+      "prereqs": ["time-space-complexity", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 54,
+      "slug": "supervised-tong-quan",
+      "title": "Học có giám sát: pipeline, scaling và phân loại bài toán",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["ml"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan", "giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 55,
+      "slug": "cay-quyet-dinh",
+      "title": "Decision tree: split, impurity và pruning",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["ml"],
+      "prereqs": ["big-o-notation", "de-quy"],
+      "minutes": 60
+    },
+    {
+      "day": 56,
+      "slug": "rung-va-boosting",
+      "title": "Random forest, GBM và XGBoost",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["ml"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 57,
+      "slug": "svm",
+      "title": "SVM: margin, kernel và dữ liệu phi tuyến",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["ml"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 58,
+      "slug": "naive-bayes",
+      "title": "Naive Bayes và mô hình xác suất cho text",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["ml", "nlp"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 59,
+      "slug": "hoi-quy",
+      "title": "Hồi quy tuyến tính, bội và logistic",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["ml"],
+      "prereqs": ["time-space-complexity"],
+      "minutes": 60
+    },
+    {
+      "day": 60,
+      "slug": "danh-gia-mo-hinh",
+      "title": "Đánh giá mô hình: confusion matrix, precision, recall, overfitting",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["ml"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 61,
+      "slug": "perceptron-mang-noron",
+      "title": "Perceptron, XOR và kiến trúc mạng noron",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["neural-network"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 62,
+      "slug": "huan-luyen-mang",
+      "title": "Huấn luyện mạng: loss, backprop và hàm kích hoạt",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["neural-network"],
+      "prereqs": ["ram-model-va-chi-phi"],
+      "minutes": 60
+    },
+    {
+      "day": 63,
+      "slug": "cnn",
+      "title": "CNN: tích chập và gộp cho ảnh",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["cnn"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 64,
+      "slug": "gan-va-transfer",
+      "title": "GAN và transfer learning",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["neural-network"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 65,
+      "slug": "nlp-co-ban",
+      "title": "NLP cơ bản: tokenize, BoW và TF-IDF",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["nlp"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 66,
+      "slug": "embedding-sentiment",
+      "title": "Word embedding và sentiment bằng Naive Bayes",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["nlp"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 67,
+      "slug": "rnn-chuoi",
+      "title": "Mô hình chuỗi và RNN với BPTT",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["rnn"],
+      "prereqs": ["de-quy", "time-space-complexity"],
+      "minutes": 60
+    },
+    {
+      "day": 68,
+      "slug": "lstm-gru",
+      "title": "LSTM và GRU: cổng và trí nhớ dài hạn",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["rnn"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 69,
+      "slug": "attention-transformer",
+      "title": "Attention, self-attention và Transformer",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["transformer"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 70,
+      "slug": "gpt-bert",
+      "title": "GPT vs BERT và Seq2Seq bottleneck",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["transformer"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 71,
+      "slug": "recsys-content",
+      "title": "Gợi ý content-based và đồng xuất hiện",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["recommendation"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 72,
+      "slug": "recsys-collaborative",
+      "title": "Collaborative filtering user-based và item-based",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["recommendation"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 73,
+      "slug": "recsys-nang-cao",
+      "title": "Matrix factorization, cold start và mô hình lai",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["recommendation"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 74,
+      "slug": "cap-va-luu-tru",
+      "title": "CAP theorem và lưu trữ phân tán",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["data-engineering"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 75,
+      "slug": "nen-du-lieu",
+      "title": "Nén dữ liệu: LZ77 và định dạng nâng cao",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["compression"],
+      "prereqs": ["big-o-notation", "time-space-complexity"],
+      "minutes": 60
+    },
+    {
+      "day": 76,
+      "slug": "stream-processing",
+      "title": "Stream processing thời gian thực và StreamSensing",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["streaming"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 77,
+      "slug": "crypto-co-ban",
+      "title": "Mật mã cơ bản: thay thế, hoán vị, băm, đối xứng",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["cryptography"],
+      "prereqs": ["big-o-notation", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 78,
+      "slug": "crypto-nang-cao",
+      "title": "Bất đối xứng, PKI, blockchain và chống MITM",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["cryptography"],
+      "prereqs": ["p-np-va-do-kho"],
+      "minutes": 60
+    },
+    {
+      "day": 79,
+      "slug": "spark-large-scale",
+      "title": "Spark, in-memory và elasticity hệ thống lớn",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["large-scale", "spark"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan", "ram-model-va-chi-phi"],
+      "minutes": 60
+    },
+    {
+      "day": 80,
+      "slug": "hieu-nang-tinh-toan",
+      "title": "Hiệu năng tính toán: Amdahl, CUDA và data locality",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["large-scale"],
+      "prereqs": ["ram-model-va-chi-phi"],
+      "minutes": 60
+    },
+    {
+      "day": 81,
+      "slug": "explainability-dao-duc",
+      "title": "Explainability: hộp trắng, hộp đen và giảm bias",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["responsible-ai"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 82,
+      "slug": "do-thi-phang",
+      "title": "Đồ thị phẳng: nhúng và định lý Kuratowski",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["graph", "planarity"],
+      "prereqs": ["thuat-toan-moi-truong-phat-trien"],
+      "minutes": 60
+    },
+    {
+      "day": 83,
+      "slug": "planarity-crossing",
+      "title": "Planarity testing và crossing number tối thiểu",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["graph"],
+      "prereqs": ["p-np-va-do-kho"],
+      "minutes": 60
+    },
+    {
+      "day": 84,
+      "slug": "gradient-descent",
+      "title": "Gradient descent: cost, step và local minima",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["optimization"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 85,
+      "slug": "gradient-ung-dung",
+      "title": "Gradient cho hồi quy tuyến tính và graph embedding",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["optimization", "ml"],
+      "prereqs": ["ram-model-va-chi-phi"],
+      "minutes": 60
+    },
+    {
+      "day": 86,
+      "slug": "simulated-annealing",
+      "title": "Simulated annealing: leo lên để xuống đáy",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["optimization"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 87,
+      "slug": "sa-tsp",
+      "title": "SA cho TSP: transition, 2-opt và tỉa cành",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["optimization", "tsp"],
+      "prereqs": ["p-np-va-do-kho"],
+      "minutes": 60
+    },
+    {
+      "day": 88,
+      "slug": "sa-graph-drawing",
+      "title": "SA vẽ đồ thị: force-directed và min edge crossing",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["optimization", "graph"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 89,
+      "slug": "genetic-co-ban",
+      "title": "Giải thuật di truyền: chromosome, fitness, selection",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["genetic"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 60
+    },
+    {
+      "day": 90,
+      "slug": "genetic-nang-cao",
+      "title": "Lai, đột biến và GA cho TSP, vertex cover",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["genetic"],
+      "prereqs": ["p-np-va-do-kho"],
+      "minutes": 60
+    },
+    {
+      "day": 91,
+      "slug": "solid-thuc-hanh",
+      "title": "SOLID, Open-Closed và Dependency Inversion thực hành",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["principles"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 92,
+      "slug": "strategy-pattern",
+      "title": "Strategy: đóng gói họ thuật toán bay và kêu của vịt",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["strategy"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 93,
+      "slug": "observer-co-ban",
+      "title": "Observer: publisher-subscriber và loose coupling",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["observer"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 94,
+      "slug": "observer-nang-cao",
+      "title": "Observer nâng cao: pull vs push và trạm thời tiết",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["observer"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 95,
+      "slug": "decorator-co-ban",
+      "title": "Decorator: Starbuzz Coffee và chuỗi bọc",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["decorator"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 96,
+      "slug": "decorator-io",
+      "title": "Decorator thực tế: Java I/O và tự viết decorator",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["decorator"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 97,
+      "slug": "simple-factory",
+      "title": "Simple Factory: đóng gói khởi tạo đối tượng pizza",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["factory"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 98,
+      "slug": "factory-method",
+      "title": "Factory Method: framework và creator song song product",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["factory"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 99,
+      "slug": "abstract-factory",
+      "title": "Abstract Factory: họ nguyên liệu và vùng miền",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["factory"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 100,
+      "slug": "factory-so-sanh",
+      "title": "So sánh 3 factory và nghịch lý mở rộng",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["factory"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 101,
+      "slug": "singleton-pattern",
+      "title": "Singleton: Chocolate Factory và an toàn đa luồng",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["singleton"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 102,
+      "slug": "command-co-ban",
+      "title": "Command: remote control và khe cắm lệnh",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["command"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 103,
+      "slug": "command-undo-macro",
+      "title": "Command: undo bằng state và macro mở tiệc",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["command"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 104,
+      "slug": "command-queue-log",
+      "title": "Command thực tế: hàng đợi, logging và ActionListener",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["command"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 105,
+      "slug": "adapter-pattern",
+      "title": "Adapter: vịt-gà tây và object vs class adapter",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["adapter"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 106,
+      "slug": "facade-pattern",
+      "title": "Facade: rạp hát tại gia và Least Knowledge",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["facade"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 107,
+      "slug": "template-method",
+      "title": "Template Method: khung pha chế và Hollywood principle",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["template-method"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 108,
+      "slug": "iterator-pattern",
+      "title": "Iterator: sáp nhập quán ăn và single responsibility",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["iterator"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 109,
+      "slug": "composite-pattern",
+      "title": "Composite: thực đơn cây, trong suốt vs an toàn",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["composite"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "de-quy"],
+      "minutes": 60
+    },
+    {
+      "day": 110,
+      "slug": "iterator-composite",
+      "title": "Kết hợp Iterator và Composite duyệt cây đệ quy",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["iterator", "composite"],
+      "prereqs": ["de-quy", "nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 111,
+      "slug": "state-co-ban",
+      "title": "State: máy bán kẹo và ủy thác trạng thái",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["state"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 112,
+      "slug": "state-nang-cao",
+      "title": "State nâng cao: game 1/10 và State vs Strategy",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["state"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 113,
+      "slug": "proxy-remote-virtual",
+      "title": "Proxy: remote RMI và virtual ảnh bìa",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["proxy"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 60
+    },
+    {
+      "day": 114,
+      "slug": "proxy-dynamic",
+      "title": "Dynamic proxy, protection proxy và vườn thú proxy",
+      "category": "design-pattern",
+      "difficulty": "chuyen-gia",
+      "tags": ["proxy"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 115,
+      "slug": "mvc-compound",
+      "title": "MVC: compound pattern điều khiển nhịp DJ",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["mvc"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 116,
+      "slug": "compound-ducks",
+      "title": "Đàn vịt compound: 4 patterns trong một app",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["compound"],
+      "prereqs": ["nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 117,
+      "slug": "bridge-builder",
+      "title": "Bridge và Builder còn lại nhưng quan trọng",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["patterns"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 118,
+      "slug": "chain-flyweight",
+      "title": "Chain of Responsibility và Flyweight",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["patterns"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "ram-model-va-chi-phi"],
+      "minutes": 60
+    },
+    {
+      "day": 119,
+      "slug": "mediator-memento-prototype",
+      "title": "Mediator, Memento và Prototype",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["patterns"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 60
+    },
+    {
+      "day": 120,
+      "slug": "interpreter-visitor",
+      "title": "Interpreter và Visitor cho ngôn ngữ và cấu trúc",
+      "category": "design-pattern",
+      "difficulty": "chuyen-gia",
+      "tags": ["patterns"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "de-quy"],
+      "minutes": 60
+    },
+    {
+      "day": 121,
+      "slug": "to-chuc-anti-patterns",
+      "title": "Tổ chức patterns C/S/B và anti-patterns",
+      "category": "design-pattern",
+      "difficulty": "trung-binh",
+      "tags": ["patterns"],
+      "prereqs": ["nhap-mon-design-patterns"],
+      "minutes": 45
+    },
+    {
+      "day": 122,
+      "slug": "project-simuduck",
+      "title": "Project: refactor SimUDuck bằng Strategy và Observer",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 120
+    },
+    {
+      "day": 123,
+      "slug": "project-pizza",
+      "title": "Project: Pizza Store bằng Factory và Decorator",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 120
+    },
+    {
+      "day": 124,
+      "slug": "project-hometheater",
+      "title": "Project: rạp hát Facade và Command macro",
+      "category": "design-pattern",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 120
+    },
+    {
+      "day": 125,
+      "slug": "patterns-phong-van",
+      "title": "Kể chuyện patterns và SOLID khi phỏng vấn",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["interview"],
+      "prereqs": ["nhap-mon-design-patterns"],
+      "minutes": 60
+    },
+    {
+      "day": 126,
+      "slug": "app-autocomplete",
+      "title": "App: autocomplete có Trie và cache LRU",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["big-o-notation", "time-space-complexity"],
+      "minutes": 120
+    },
+    {
+      "day": 127,
+      "slug": "app-search-engine",
+      "title": "App: mini search engine với Trie, ranking và Bloom",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["big-o-notation", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 128,
+      "slug": "app-rate-limiter",
+      "title": "App: rate limiter bằng cache và hàng đợi",
+      "category": "data-structure",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["time-space-complexity", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 129,
+      "slug": "app-topk-stream",
+      "title": "App: top-K trên stream bằng heap",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["big-o-notation", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 130,
+      "slug": "app-fraud-pipeline",
+      "title": "App: pipeline phát hiện gian lận bằng đồ thị",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 131,
+      "slug": "app-recsys-pipeline",
+      "title": "App: recommendation engine end-to-end",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 132,
+      "slug": "app-clustering-pipeline",
+      "title": "App: pipeline clustering từ K-means tới OPTICS",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 120
+    },
+    {
+      "day": 133,
+      "slug": "app-mapreduce-spark",
+      "title": "App: wordcount MapReduce và Spark job",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan", "ram-model-va-chi-phi"],
+      "minutes": 120
+    },
+    {
+      "day": 134,
+      "slug": "app-delivery-routes",
+      "title": "App: tuyến giao hàng so sánh BFS, Dijkstra, A*",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["big-o-notation", "ram-model-va-chi-phi"],
+      "minutes": 120
+    },
+    {
+      "day": 135,
+      "slug": "app-mst-network",
+      "title": "App: thiết kế mạng với Prim và Kruskal",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["big-o-notation"],
+      "minutes": 120
+    },
+    {
+      "day": 136,
+      "slug": "app-tsp-showdown",
+      "title": "App: TSP so găng greedy, SA và GA",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["p-np-va-do-kho"],
+      "minutes": 120
+    },
+    {
+      "day": 137,
+      "slug": "app-graph-embedding",
+      "title": "App: nhúng và vẽ đồ thị force-directed",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 138,
+      "slug": "app-tuning",
+      "title": "App: tuning siêu tham số với gradient và eval",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac", "ram-model-va-chi-phi"],
+      "minutes": 120
+    },
+    {
+      "day": 139,
+      "slug": "app-sentiment",
+      "title": "App: sentiment từ tokenize tới Naive Bayes",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 120
+    },
+    {
+      "day": 140,
+      "slug": "app-image-search",
+      "title": "App: tìm ảnh với CNN và similarity search",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 141,
+      "slug": "app-forecast",
+      "title": "App: dự báo chuỗi với RNN và LSTM",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["time-space-complexity"],
+      "minutes": 120
+    },
+    {
+      "day": 142,
+      "slug": "app-secure-chat",
+      "title": "App: chat bảo mật với TLS handshake và PKI",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["p-np-va-do-kho", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 143,
+      "slug": "app-data-pipeline",
+      "title": "App: pipeline batch vs stream và CAP",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 144,
+      "slug": "app-cache-system",
+      "title": "App: hệ thống cache LRU, LFU và locks",
+      "category": "data-structure",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["time-space-complexity", "ram-model-va-chi-phi"],
+      "minutes": 120
+    },
+    {
+      "day": 145,
+      "slug": "app-db-index",
+      "title": "App: index DB với B-tree, hash và Bloom",
+      "category": "data-structure",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["big-o-notation", "ram-model-va-chi-phi"],
+      "minutes": 120
+    },
+    {
+      "day": 146,
+      "slug": "app-spell-checker",
+      "title": "App: spell checker với Trie và độ tương đồng",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["big-o-notation"],
+      "minutes": 120
+    },
+    {
+      "day": 147,
+      "slug": "app-game-ai",
+      "title": "App: AI game kẹo với State và Strategy",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 120
+    },
+    {
+      "day": 148,
+      "slug": "app-text-editor",
+      "title": "App: text editor undo với stack, Command và Memento",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 120
+    },
+    {
+      "day": 149,
+      "slug": "app-notification",
+      "title": "App: hệ thống thông báo với Observer và queue",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "chieu-du-lieu-va-tinh-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 150,
+      "slug": "on-tap-tong-hop",
+      "title": "Ôn tập tổng hợp: từ sắp xếp tới tối ưu",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["review"],
+      "prereqs": ["big-o-notation", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 90
+    },
+    {
+      "day": 151,
+      "slug": "capstone-sort-graph",
+      "title": "Capstone: benchmark sort và graph traversal",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["big-o-notation", "ram-model-va-chi-phi"],
+      "minutes": 120
+    },
+    {
+      "day": 152,
+      "slug": "capstone-cache-trie",
+      "title": "Capstone: autocomplete cache LRU và Trie nâng cao",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["time-space-complexity"],
+      "minutes": 120
+    },
+    {
+      "day": 153,
+      "slug": "capstone-clustering",
+      "title": "Capstone: clustering pipeline và báo cáo metric",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 120
+    },
+    {
+      "day": 154,
+      "slug": "capstone-recsys",
+      "title": "Capstone: recsys có đo cold start và sparsity",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 155,
+      "slug": "capstone-crypto-scale",
+      "title": "Capstone: hệ thống lớn có mật mã và streaming",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 156,
+      "slug": "capstone-optimization",
+      "title": "Capstone: tối ưu TSP và vẽ đồ thị tổng hợp",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["p-np-va-do-kho"],
+      "minutes": 120
+    },
+    {
+      "day": 157,
+      "slug": "capstone-patterns-duck",
+      "title": "Capstone: SimUDuck refactor toàn diện",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 120
+    },
+    {
+      "day": 158,
+      "slug": "capstone-patterns-pizza",
+      "title": "Capstone: Pizza Store đa vùng và toppings",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["capstone"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 120
+    },
+    {
+      "day": 159,
+      "slug": "capstone-patterns-home",
+      "title": "Capstone: home theater Facade và macro",
+      "category": "design-pattern",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 120
+    },
+    {
+      "day": 160,
+      "slug": "capstone-social",
+      "title": "Capstone: mạng xã hội mini với graph và feed",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["capstone"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan", "thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 161,
+      "slug": "phong-van-algo-1",
+      "title": "Phỏng vấn 1: array, string và two pointers",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["interview"],
+      "prereqs": ["big-o-notation", "time-space-complexity"],
+      "minutes": 90
+    },
+    {
+      "day": 162,
+      "slug": "phong-van-algo-2",
+      "title": "Phỏng vấn 2: BST, heap và top-k",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["interview"],
+      "prereqs": ["big-o-notation", "de-quy"],
+      "minutes": 90
+    },
+    {
+      "day": 163,
+      "slug": "phong-van-graph",
+      "title": "Phỏng vấn 3: BFS, DFS, Dijkstra trên ma trận",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["interview"],
+      "prereqs": ["big-o-notation"],
+      "minutes": 90
+    },
+    {
+      "day": 164,
+      "slug": "phong-van-dp",
+      "title": "Phỏng vấn 4: DP kinh điển và greedy chứng minh",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["interview"],
+      "prereqs": ["de-quy", "p-np-va-do-kho"],
+      "minutes": 90
+    },
+    {
+      "day": 165,
+      "slug": "phong-van-system",
+      "title": "Phỏng vấn 5: cache, rate limiter và search",
+      "category": "data-structure",
+      "difficulty": "chuyen-gia",
+      "tags": ["interview", "system-design"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan", "time-space-complexity"],
+      "minutes": 90
+    },
+    {
+      "day": 166,
+      "slug": "phong-van-patterns",
+      "title": "Phỏng vấn 6: kể chuyện patterns và SOLID",
+      "category": "design-pattern",
+      "difficulty": "kho",
+      "tags": ["interview"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong", "nhap-mon-design-patterns"],
+      "minutes": 90
+    },
+    {
+      "day": 167,
+      "slug": "du-an-cuoi-1",
+      "title": "Dự án cuối 1: đặc tả và chia module",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["project"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 120
+    },
+    {
+      "day": 168,
+      "slug": "du-an-cuoi-2",
+      "title": "Dự án cuối 2: benchmark và profiling",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["project"],
+      "prereqs": ["ram-model-va-chi-phi", "big-o-notation"],
+      "minutes": 120
+    },
+    {
+      "day": 169,
+      "slug": "du-an-cuoi-3",
+      "title": "Dự án cuối 3: dữ liệu lớn và evaluate",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["project"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan", "giai-thuat-ngau-nhien-va-do-chinh-xac"],
+      "minutes": 120
+    },
+    {
+      "day": 170,
+      "slug": "du-an-cuoi-4",
+      "title": "Dự án cuối 4: áp dụng patterns và review chéo",
+      "category": "design-pattern",
+      "difficulty": "chuyen-gia",
+      "tags": ["project"],
+      "prereqs": ["nguyen-ly-thiet-ke-huong-doi-tuong"],
+      "minutes": 120
+    },
+    {
+      "day": 171,
+      "slug": "tong-ket-180-ngay",
+      "title": "Tổng kết 180 ngày: bản đồ tri thức",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["review"],
+      "prereqs": [],
+      "minutes": 60
+    },
+    {
+      "day": 172,
+      "slug": "lo-trinh-sau-180",
+      "title": "Lộ trình sau 180 ngày: ML, systems, research",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["roadmap"],
+      "prereqs": [],
+      "minutes": 60
+    },
+    {
+      "day": 173,
+      "slug": "checklist-nang-luc",
+      "title": "Checklist năng lực: tự đánh giá 180 kỹ năng",
+      "category": "algorithm",
+      "difficulty": "trung-binh",
+      "tags": ["review"],
+      "prereqs": [],
+      "minutes": 60
+    },
+    {
+      "day": 174,
+      "slug": "bo-de-luyen-them",
+      "title": "Bộ đề luyện thêm 50 bài tự ra đề",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["practice"],
+      "prereqs": [],
+      "minutes": 120
+    },
+    {
+      "day": 175,
+      "slug": "system-design-co-ban",
+      "title": "System design cơ bản: scale, ELB và sharding",
+      "category": "data-structure",
+      "difficulty": "chuyen-gia",
+      "tags": ["system-design"],
+      "prereqs": ["chieu-du-lieu-va-tinh-toan"],
+      "minutes": 90
+    },
+    {
+      "day": 176,
+      "slug": "doc-paper-viet-blog",
+      "title": "Đọc whitepaper và viết blog kỹ thuật",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["practice"],
+      "prereqs": ["thiet-ke-va-kiem-chung-thuat-toan"],
+      "minutes": 90
+    },
+    {
+      "day": 177,
+      "slug": "open-source-day",
+      "title": "Ngày open source: đọc source và đóng góp",
+      "category": "algorithm",
+      "difficulty": "kho",
+      "tags": ["practice"],
+      "prereqs": [],
+      "minutes": 90
+    },
+    {
+      "day": 178,
+      "slug": "mock-interview",
+      "title": "Mock interview và peer review chéo",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["interview"],
+      "prereqs": [],
+      "minutes": 120
+    },
+    {
+      "day": 179,
+      "slug": "san-pham-demo",
+      "title": "Hoàn thiện sản phẩm demo cuối khóa",
+      "category": "algorithm",
+      "difficulty": "chuyen-gia",
+      "tags": ["project"],
+      "prereqs": [],
+      "minutes": 120
+    },
+    {
+      "day": 180,
+      "slug": "le-tot-nghiep",
+      "title": "Ngày 180: demo day và tổng kết",
+      "category": "algorithm",
+      "difficulty": "de",
+      "tags": ["celebration"],
+      "prereqs": [],
+      "minutes": 60
+    }
+  ]
+}

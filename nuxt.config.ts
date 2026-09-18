@@ -35,7 +35,7 @@ export default defineNuxtConfig({
     url: process.env.NUXT_PUBLIC_SITE_URL || "https://180-days-challenge.vercel.app",
     name: "180 Days Challenge",
     description:
-      "180 ngày làm chủ thuật toán, cấu trúc dữ liệu và design patterns bằng tiếng Việt.",
+      "180 ngày cai nghiện vibe code: mỗi ngày một thử thách coding nhỏ để hiểu thật thứ mình viết.",
     defaultLocale: "vi",
   },
   sitemap: {

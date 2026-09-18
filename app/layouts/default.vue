@@ -41,12 +41,12 @@ const items = computed<NavigationMenuItem[]>(() => [
     <UFooter>
       <template #left>
         <p class="text-muted text-sm">
-          180 Days Challenge — học thuật toán, cấu trúc dữ liệu và design patterns bằng tiếng Việt.
+          180 Days Challenge — 180 ngày cai nghiện vibe code.
         </p>
       </template>
       <template #right>
         <p class="text-muted text-sm">
-          Nội dung được biên soạn cho người tự học thuật toán bằng tiếng Việt.
+          Bớt paste mù, hiểu sâu từng dòng mình viết.
         </p>
       </template>
     </UFooter>

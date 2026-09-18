@@ -1,8 +1,8 @@
 <script setup lang="ts">
 useSeoDefaults({
-  title: "180 ngày làm chủ thuật toán và thiết kế",
+  title: "180 ngày cai nghiện vibe code",
   description:
-    "Mỗi ngày một thử thách coding: cấu trúc dữ liệu, thuật toán và design patterns bằng tiếng Việt, từ dễ đến khó, kèm outcome và rubric.",
+    "Mỗi ngày một thử thách coding: cấu trúc dữ liệu, thuật toán và design patterns từ dễ đến khó, kèm outcome và rubric — để hiểu thật thứ mình viết.",
   path: "/",
 });
 
@@ -15,7 +15,7 @@ useHead({
         "@type": "Course",
         name: "180 Days Challenge",
         description:
-          "180 ngày làm chủ thuật toán, cấu trúc dữ liệu và design patterns bằng tiếng Việt.",
+          "180 ngày cai nghiện vibe code: mỗi ngày một thử thách coding nhỏ để hiểu thật thứ mình viết.",
         inLanguage: "vi",
         provider: { "@type": "Organization", name: "180 Days Challenge" },
       }),
@@ -77,14 +77,14 @@ const phases = [
       <div class="grid items-center gap-10 lg:grid-cols-2">
         <div>
           <UBadge color="primary" variant="soft" class="mb-4"
-            >Chương trình 180 ngày · Tiếng Việt</UBadge
+            >180 ngày cai nghiện vibe code</UBadge
           >
           <h1 class="text-4xl font-bold tracking-tight text-balance md:text-5xl">
-            Làm chủ thuật toán, từng ngày một
+            Cai nghiện vibe code, từng ngày một
           </h1>
           <p class="text-muted mt-4 max-w-[55ch] leading-relaxed">
             Mỗi ngày một thử thách coding với outcome rõ ràng: đọc nền tảng, học kiến thức trọng
-            tâm, làm bài tập và tự chấm bằng rubric.
+            tâm, làm bài tập và tự chấm bằng rubric. Bớt paste mù, hiểu sâu từng dòng mình viết.
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
             <UButton to="/challenges" icon="i-lucide-play" label="Bắt đầu ngày 1" size="lg" />

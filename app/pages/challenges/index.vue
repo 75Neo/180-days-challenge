@@ -2,7 +2,7 @@
 useSeoDefaults({
   title: "180 thử thách",
   description:
-    "Danh sách 180 ngày học thuật toán, cấu trúc dữ liệu và design patterns: kiến thức trọng tâm, outcome, bài tập và rubric mỗi ngày.",
+    "Danh sách 180 ngày cai nghiện vibe code: kiến thức trọng tâm, outcome, bài tập và rubric mỗi ngày.",
   path: "/challenges",
 });
 

@@ -39,34 +39,28 @@ const totalMinutes = computed(() =>
 
 const phases = [
   {
-    range: "Ngày 1–12",
-    title: "Nền móng",
-    desc: "Mảng, linked list, stack, queue, BST, đệ quy, sắp xếp, tìm kiếm.",
+    range: "Ngày 1–21",
+    title: "Khởi động đan xen",
+    desc: "DSA dễ: mảng, list, stack, BST, đệ quy, sắp xếp, tìm kiếm + patterns đầu tay: SOLID, Strategy, Observer, Decorator, Factory, Singleton. Chốt bằng mini project benchmark sắp xếp.",
     icon: "i-lucide-sprout",
   },
   {
-    range: "Ngày 13–30",
-    title: "Cấu trúc trung gian",
-    desc: "Heap, treap, Bloom, Union-Find, trie, cache, đồ thị cơ bản.",
+    range: "Ngày 22–64",
+    title: "Nền trung bình đan xen",
+    desc: "Heap, treap, Bloom, Union-Find, trie, hash, LRU, BFS/DFS/Dijkstra, clustering và ML nhập môn + Factory, Command, Facade, Template, Iterator.",
     icon: "i-lucide-boxes",
   },
   {
-    range: "Ngày 31–50",
-    title: "Đồ thị và phân cụm",
-    desc: "Dijkstra, A*, PageRank, k-d tree, clustering, MapReduce.",
-    icon: "i-lucide-share-2",
-  },
-  {
-    range: "Ngày 51–90",
-    title: "Học máy",
-    desc: "Supervised, neural nets, NLP, Transformer, gợi ý, mật mã, tối ưu.",
+    range: "Ngày 65–118",
+    title: "Nâng cao",
+    desc: "DP, quy hoạch tuyến tính, đồ thị khó, neural nets, Transformer, tối ưu SA/GA + State, Proxy, MVC, compound và 3 project patterns.",
     icon: "i-lucide-brain",
   },
   {
-    range: "Ngày 91–125",
-    title: "Design patterns",
-    desc: "16 patterns qua câu chuyện SimUDuck, Pizza Store, Gumball.",
-    icon: "i-lucide-puzzle",
+    range: "Ngày 119–125",
+    title: "Chuyên gia",
+    desc: "SS-tree, planarity, vẽ đồ thị force-directed, GA nâng cao, Interpreter/Visitor và project rạp hát.",
+    icon: "i-lucide-share-2",
   },
   {
     range: "Ngày 126–180",

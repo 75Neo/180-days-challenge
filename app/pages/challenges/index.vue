@@ -2,7 +2,7 @@
 useSeoDefaults({
   title: "180 thử thách",
   description:
-    "Danh sách 180 ngày cai nghiện vibe code: kiến thức trọng tâm, outcome, bài tập và rubric mỗi ngày.",
+    "Danh sách 180 ngày: kiến thức trọng tâm, outcome, bài tập và rubric mỗi ngày.",
   path: "/challenges",
 });
 
@@ -47,15 +47,14 @@ const filtered = computed(() => {
 
 <template>
   <UContainer class="py-10 md:py-14">
-    <div class="max-w-[65ch]">
-      <h1 class="text-3xl font-bold tracking-tight md:text-4xl">180 thử thách</h1>
-      <p class="text-muted mt-3 leading-relaxed">
-        Mỗi thẻ là một ngày học: kiến thức trọng tâm, outcome phải đạt, bài tập và rubric. Dùng bộ
-        lọc để đi đúng trình độ của bạn.
-      </p>
-    </div>
+    <UPageHero
+      title="180 thử thách"
+      description="Mỗi thẻ là một ngày học: kiến thức trọng tâm, outcome phải đạt, bài tập và rubric. Dùng bộ lọc để đi đúng trình độ của bạn."
+      orientation="vertical"
+      :ui="{ container: 'py-0 sm:py-0', title: 'text-3xl sm:text-4xl' }"
+    />
 
-    <div class="sticky top-16 z-10 -mx-1 mt-8 bg-default/90 px-1 py-3 backdrop-blur">
+    <div class="sticky top-16 z-10 -mx-1 mt-8 bg-default px-1 py-3">
       <div class="flex flex-col gap-3 md:flex-row">
         <UInput
           v-model="search"
@@ -84,40 +83,30 @@ const filtered = computed(() => {
       Hiển thị {{ filtered.length }} / {{ challenges?.length ?? 0 }} ngày
     </p>
 
-    <div class="grid gap-4 md:grid-cols-2">
-      <NuxtLink
+    <UPageGrid>
+      <UPageCard
         v-for="c in filtered"
         :key="c.path"
         :to="`/challenges/${stemOf(c)}`"
-        class="group flex gap-4 rounded-xl border border-muted bg-elevated/40 p-5 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-[0_8px_30px_-12px_rgba(236,72,153,0.35)] active:translate-y-0"
+        :title="`Ngày ${c.day}: ${c.title}`"
+        :description="c.description"
+        :icon="categoryIcon[c.category] ?? 'i-lucide-code'"
       >
-        <div class="flex w-14 shrink-0 flex-col items-center">
-          <span class="text-2xl font-bold tabular-nums">{{ c.day }}</span>
-          <UIcon
-            :name="categoryIcon[c.category] ?? 'i-lucide-code'"
-            class="text-muted mt-1 size-4"
-          />
-        </div>
-        <div class="min-w-0 flex-1">
-          <p class="font-semibold leading-snug group-hover:text-primary">{{ c.title }}</p>
-          <p class="text-muted mt-1 line-clamp-2 text-sm">{{ c.description }}</p>
-          <div class="mt-3 flex flex-wrap items-center gap-2">
+        <template #footer>
+          <div class="flex flex-wrap items-center gap-2">
             <UBadge :color="difficultyColor[c.difficulty] ?? 'neutral'" variant="subtle" size="sm">
               {{ difficultyLabel[c.difficulty] ?? c.difficulty }}
             </UBadge>
             <UBadge color="neutral" variant="subtle" size="sm">{{
               categoryLabel[c.category] ?? c.category
             }}</UBadge>
-            <span v-if="c.outcomes?.length" class="text-muted text-xs"
-              >{{ c.outcomes.length }} outcomes</span
-            >
             <span v-if="c.estimatedMinutes" class="text-muted text-xs"
-              >· ~{{ c.estimatedMinutes }} phút</span
+              >~{{ c.estimatedMinutes }} phút</span
             >
           </div>
-        </div>
-      </NuxtLink>
-    </div>
+        </template>
+      </UPageCard>
+    </UPageGrid>
 
     <UEmpty
       v-if="!filtered.length"

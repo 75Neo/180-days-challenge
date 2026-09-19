@@ -68,11 +68,13 @@ useHead({
         :items="[{ label: 'Nền tảng', to: '/fundamentals' }, { label: page.title }]"
         class="mb-5"
       />
-      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-info">Lý thuyết nền tảng</p>
-      <h1 class="mt-3 max-w-[20ch] text-4xl font-bold tracking-tight text-balance md:text-5xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-info">
+        Lý thuyết nền tảng
+      </p>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight text-balance md:text-5xl">
         {{ page.title }}
       </h1>
-      <p class="text-muted mt-4 max-w-[62ch] text-lg leading-relaxed">{{ page.description }}</p>
+      <p class="text-muted mt-4 text-lg leading-relaxed">{{ page.description }}</p>
       <div class="mt-5 flex flex-wrap items-center gap-2">
         <span
           v-if="page.estimatedMinutes"

@@ -1062,7 +1062,7 @@
     {
       "day": 71,
       "slug": "decorator-io",
-      "title": "Decorator thực tế: Java I/O và tự viết decorator",
+      "title": "Decorator thực tế: thư viện vào-ra và tự viết decorator",
       "category": "design-pattern",
       "difficulty": "kho",
       "tags": [
@@ -1450,7 +1450,7 @@
     {
       "day": 98,
       "slug": "proxy-remote-virtual",
-      "title": "Proxy: remote RMI và virtual ảnh bìa",
+      "title": "Proxy: truy cập từ xa và virtual ảnh bìa",
       "category": "design-pattern",
       "difficulty": "kho",
       "tags": [

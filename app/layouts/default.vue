@@ -27,6 +27,7 @@ const items = computed<NavigationMenuItem[]>(() => [
           target="_blank"
           aria-label="GitHub"
         />
+        <UButton to="/challenges/1.mang-va-danh-sach" icon="i-lucide-play" label="Bắt đầu" />
       </template>
 
       <template #body>

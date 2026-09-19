@@ -3,3 +3,63 @@
 @import "katex/dist/katex.min.css";
 
 @source "../../../content/**/*";
+
+:root {
+  --ui-radius: 0rem;
+}
+
+/* Yêu cầu thiết kế: góc vuông toàn site, không bo góc.
+   Rule này vô hiệu mọi utility rounded (kể cả bo góc từng phía
+   như rounded-ss-md của bảng) từ Nuxt UI lẫn markup custom. */
+[class*="rounded"] {
+  border-radius: 0 !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--ui-color-primary-200);
+}
+
+/* Article typography: rhythm + hierarchy for long Vietnamese lessons */
+.prose {
+  --tw-prose-body: var(--ui-text-muted);
+  --tw-prose-headings: var(--ui-text-highlighted);
+  --tw-prose-links: var(--ui-primary);
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.prose h2 {
+  scroll-margin-top: 6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-top: 2.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--ui-border-muted);
+}
+
+.prose h2:first-child {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0;
+}
+
+.prose h3 {
+  scroll-margin-top: 6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 2rem;
+}
+
+/* Nuxt UI đã có sẵn prose components (ProseTable, ProseBlockquote,
+   ProseCode...) với style chuẩn — không đè CSS lên các thẻ đó để
+   tránh vỡ giao diện. File này chỉ tinh chỉnh rhythm tiêu đề. */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

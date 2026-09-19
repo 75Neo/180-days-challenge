@@ -76,10 +76,10 @@ useHead({
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-primary">
         Ngày {{ page.day }} / 180
       </p>
-      <h1 class="mt-3 max-w-[20ch] text-4xl font-bold tracking-tight text-balance md:text-5xl">
+      <h1 class="mt-3 text-4xl font-bold tracking-tight text-balance md:text-5xl">
         {{ page.title }}
       </h1>
-      <p class="text-muted mt-4 max-w-[62ch] text-lg leading-relaxed">{{ page.description }}</p>
+      <p class="text-muted mt-4 text-lg leading-relaxed">{{ page.description }}</p>
 
       <div class="mt-5 flex flex-wrap items-center gap-2">
         <UBadge :color="difficultyColor[page.difficulty] ?? 'neutral'" variant="subtle">
@@ -94,9 +94,9 @@ useHead({
         >
           <UIcon name="i-lucide-timer" class="size-4" /> ~{{ page.estimatedMinutes }} phút
         </span>
-      </div>
-      <div v-if="page.tags?.length" class="mt-3 flex flex-wrap gap-2">
-        <UBadge v-for="t in page.tags" :key="t" color="neutral" variant="outline">#{{ t }}</UBadge>
+        <UBadge v-for="t in page.tags" :key="t" color="neutral" variant="outline"
+          >#{{ t }}</UBadge
+        >
       </div>
 
       <USeparator class="my-8" />
@@ -111,7 +111,7 @@ useHead({
             </template>
             <ul class="space-y-2">
               <li v-for="o in page.outcomes" :key="o" class="flex gap-2.5 text-sm leading-relaxed">
-                <UIcon name="i-lucide-circle-check" class="mt-0.5 shrink-0 text-success" />
+                <span class="shrink-0 font-bold text-primary">—</span>
                 <span>{{ o }}</span>
               </li>
             </ul>

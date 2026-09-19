@@ -16,12 +16,12 @@
     {
       "day": 1,
       "slug": "mang-va-danh-sach",
-      "title": "Mảng, vector và list: thao tác cơ bản và độ phức tạp",
+      "title": "Dynamic Array: mảng động và cách tự cài đặt",
       "category": "data-structure",
       "difficulty": "de",
       "tags": [
         "array",
-        "vector"
+        "dynamic-array"
       ],
       "prereqs": [
         "thuat-toan-moi-truong-phat-trien",

@@ -158,9 +158,8 @@ const phases = [
         Cai nghiện vibe code, từng ngày một
       </h1>
       <p class="text-muted mt-4 max-w-2xl text-lg leading-relaxed">
-        Mỗi ngày một thử thách với outcome rõ ràng và rubric tự chấm. Bớt paste mù, hiểu sâu từng
-        dòng mình viết. Không cần cài gì, không cần chọn ngôn ngữ — chỉ ý tưởng thuật toán và kiến
-        thức cơ bản.
+        Mỗi ngày một bài code nhỏ — Python, JavaScript, C++ hay ngôn ngữ nào cũng được. Hiểu
+        thật thứ mình viết, bỏ thói paste mù.
       </p>
       <div class="mt-6 flex flex-wrap gap-3">
         <UButton

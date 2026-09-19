@@ -1,7 +1,7 @@
 ---
 title: "Đệ quy: tư duy và cái giá"
 description: "Đệ quy đơn giản, điều kiện dừng, cạm bẫy tính lại, ghi nhớ kết quả, đệ quy đuôi và đệ quy tương hỗ ở mức lý thuyết và trace bằng lời."
-lastUpdate: 2026-09-17
+lastUpdate: 2026-09-19
 difficulty: de
 category: fundamentals
 estimatedMinutes: 40
@@ -12,64 +12,114 @@ tags: [de-quy, dieu-kien-dung, memoization, fundamentals]
 
 ## 1. Tổng quan
 
-Đệ quy là kỹ thuật mà một hàm giải bài toán bằng cách gọi lại chính nó trên phiên bản nhỏ hơn của bài toán. Bài này trình bày các khái niệm trong bài này gồm đệ quy đơn giản, điều kiện dừng, cạm bẫy tính lại, kỹ thuật ghi nhớ, đệ quy đuôi và đệ quy tương hỗ, hoàn toàn ở mức lý thuyết với việc lần vết bằng lời.
+Đệ quy là hàm gọi lại chính nó trên bài toán nhỏ hơn. Bài này trình bày toàn bộ bằng lý thuyết và lần vết bằng lời.
+
+Các khái niệm gồm: đệ quy đơn giản, điều kiện dừng, cạm bẫy tính lại, ghi nhớ, đệ quy đuôi và đệ quy tương hỗ.
 
 ## 2. Đệ quy đơn giản và điều kiện dừng
 
-Trường hợp đơn giản nhất của đệ quy là khi một hàm gọi chính nó tại một điểm trong luồng thực thi. Hai ví dụ kinh điển mà bài này nêu là tính giai thừa và dãy Fibonacci, trong đó số hạng thứ n bằng tổng của hai số hạng trước nó, kèm hai trường hợp cơ sở cho n bằng 0 và n bằng 1.
+Dạng đơn giản nhất: một hàm gọi chính nó trong lúc chạy. Hai ví dụ kinh điển là giai thừa và Fibonacci.
 
-Điều kiện dừng, hay trường hợp cơ sở, là thành phần bắt buộc đầu tiên của mọi định nghĩa đệ quy đúng. Bài này nhấn mạnh phải đảm bảo trường hợp cơ sở luôn tới được. Nếu quên kiểm tra đối số không âm, lời gọi với n âm sẽ đi qua mọi số nguyên âm lưu trữ được trước khi chạm trường hợp cơ sở, nhưng thực tế nó văng lỗi tràn ngăn xếp từ rất lâu trước đó.
+Trong Fibonacci, số hạng thứ n bằng tổng hai số trước nó. Kèm hai trường hợp cơ sở cho $n = 0$ và $n = 1$.
 
-Một cạm bẫy tinh vi hơn nằm ở kiểm tra kiểu dữ liệu trong ngôn ngữ kiểu yếu. Bài này minh họa: khi truyền vào một giá trị không phải số, phép trừ cho ra giá trị không phải số, mà giá trị này không khớp bất kỳ nhánh điều kiện dừng nào, nên hàm rơi vào đệ quy vô hạn và kết thúc bằng lỗi tràn ngăn xếp. Bài học là điều kiện dừng phải bao phủ mọi đầu vào có thể, kể cả đầu vào không hợp lệ.
+Điều kiện dừng là thành phần bắt buộc đầu tiên. Phải đảm bảo nó luôn tới được.
+
+Nếu quên kiểm tra số âm, lời gọi với n âm chạy mãi. Thực tế nó văng lỗi tràn ngăn xếp từ rất sớm.
+
+Cạm bẫy tinh vi hơn nằm ở kiểu dữ liệu yếu. Truyền vào giá trị không phải số, phép trừ cho ra giá trị không phải số.
+
+Giá trị này không khớp nhánh dừng nào. Hàm rơi vào đệ quy vô hạn rồi tràn ngăn xếp.
+
+Bài học: điều kiện dừng phải bao phủ mọi đầu vào. Kể cả đầu vào không hợp lệ.
 
 ## 3. Cạm bẫy tính lại và kỹ thuật ghi nhớ
 
-Hạn chế thứ hai của đệ quy ngây thơ là lãng phí tài nguyên do tính lại. Bài này hướng dẫn lần vết lời gọi tính số Fibonacci thứ 4 bằng lời: lời gọi mức 4 sinh hai lời gọi mức 3 và mức 2, rồi tiếp tục phân nhánh cho tới mức 1 và mức 0. Kết quả là cùng một giá trị được tính đi tính lại nhiều lần với cái giá là hàng loạt lời gọi hàm.
+Hạn chế thứ hai là tính lại lãng phí. Lần vết tính Fibonacci thứ 4 bằng lời.
 
-Việc tính đi tính lại các bài toán con là dấu hiệu cho thấy có thể tồn tại lời giải hiệu quả hơn, và trong những trường hợp này quy hoạch động thường là lựa chọn tốt hơn. Một kỹ thuật cải thiện mà bài này giới thiệu là ghi nhớ kết quả trung gian: trước khi gọi đệ quy, kiểm tra xem giá trị đã có trong bộ nhớ đệm chưa; nếu có thì dùng lại, nếu chưa thì tính rồi lưu vào đệm cho lần sau. Bài này lưu ý cả đệ quy ngây thơ lẫn ghi nhớ đều có thể gây vấn đề bộ nhớ khi quy mô lớn, nên ghi nhớ là một đánh đổi có tính toán chứ không phải tấm vé miễn phí.
+Lời gọi mức 4 sinh hai lời gọi mức 3 và 2. Rồi phân nhánh tiếp xuống mức 1 và 0.
+
+Kết quả là cùng một giá trị tính đi tính lại nhiều lần. Cái giá là hàng loạt lời gọi hàm dư thừa.
+
+Bài toán con gối nhau là dấu hiệu cần lời giải khác. Quy hoạch động thường là lựa chọn tốt hơn.
+
+Kỹ thuật cải thiện là ghi nhớ kết quả trung gian. Trước khi gọi đệ quy, kiểm tra bộ nhớ đệm trước.
+
+Nếu có rồi thì dùng lại. Nếu chưa thì tính rồi lưu vào cho lần sau.
+
+Lưu ý: cả đệ quy ngây thơ lẫn ghi nhớ đều tốn bộ nhớ khi quy mô lớn. Ghi nhớ là đánh đổi có tính toán, không phải vé miễn phí.
 
 ## 4. Đệ quy tốt: khi bản chất bài toán vốn đệ quy
 
-Bài này thẳng thắn chỉ ra ví dụ Fibonacci cho thấy đệ quy không cải thiện gì so với thuật toán lặp. Nhưng có những trường hợp đệ quy là lựa chọn đúng, thường vì bản chất bài toán hay định nghĩa của nó vốn đã đệ quy, và lúc đó lý do chọn đệ quy phần nhiều là sự rõ ràng hơn là hiệu năng.
+Ví dụ Fibonacci cho thấy đệ quy không hơn gì vòng lặp. Nhưng có lúc đệ quy là lựa chọn đúng.
 
-Ví dụ thanh lịch mà bài này nêu là duyệt cây nhị phân theo thứ tự trước: với nút rỗng thì ghi nhận đã tới lá, với nút có giá trị thì xử lý giá trị của nút rồi đệ quy duyệt cây con trái, sau đó đệ quy duyệt cây con phải khi toàn bộ cây con trái đã xong. Phiên bản lặp tương đương phải dùng ngăn xếp tường minh để mô phỏng hành vi của các lời gọi đệ quy, nên dài dòng và khó viết đúng hơn hẳn. Bài này cũng giới thiệu hai thứ tự duyệt còn lại: duyệt giữa theo thứ tự cây con trái rồi giá trị nút rồi cây con phải, và duyệt sau theo thứ tự hai cây con rồi mới tới giá trị nút.
+Đó là khi bản chất bài toán vốn đã đệ quy. Lý do chọn lúc này là sự rõ ràng, không phải hiệu năng.
+
+Ví dụ thanh lịch là duyệt cây nhị phân theo thứ tự trước. Gặp nút rỗng thì ghi nhận đã tới lá.
+
+Gặp nút có giá trị thì xử lý nó. Rồi đệ quy duyệt cây trái, sau đó duyệt cây phải.
+
+Bản lặp tương đương phải dùng ngăn xếp tường minh. Nó dài dòng và khó viết đúng hơn hẳn.
+
+Hai thứ tự còn lại: duyệt giữa theo trái, nút, phải. Duyệt sau theo hai cây con rồi mới tới nút.
 
 ## 5. Đệ quy đuôi và khung ngăn xếp
 
-Mỗi lần gọi hàm, chương trình tạo một khung ngăn xếp gồm con trỏ lệnh quay về, các đối số, các biến cục bộ và chỗ giữ giá trị trả về. Lời gọi đệ quy không phải ngoại lệ, với điểm đặc biệt là lời gọi đầu tiên có thể chưa trả về cho tới khi chạm điều kiện dừng, khiến chuỗi gọi dài bất thường.
+Mỗi lần gọi hàm, chương trình tạo một khung ngăn xếp. Khung gồm địa chỉ quay về, đối số, biến cục bộ và chỗ giữ kết quả.
 
-Tin vui là trình biên dịch hiện đại tối ưu được một dạng đệ quy đặc biệt. Lời gọi đuôi là lời gọi hàm thực hiện như thao tác cuối cùng của hàm; hàm là đệ quy đuôi nếu các lời gọi đệ quy của nó nằm ở vị trí đuôi. Hầu hết trình biên dịch tối ưu lời gọi đuôi bằng cách bỏ qua việc tạo khung ngăn xếp, và với đệ quy đuôi còn viết lại chuỗi gọi thành vòng lặp.
+Lời gọi đệ quy không phải ngoại lệ. Điểm đặc biệt là lời gọi đầu chưa trả về cho tới khi chạm điều kiện dừng.
 
-Điểm tinh tế mà bài này nhấn mạnh: viết lời gọi đệ quy ở cuối dòng chưa đủ để thành đệ quy đuôi. Phiên bản giai thừa viết gọn thành trả về n nhân với giai thừa của n trừ 1 trông như đuôi nhưng thực chất không phải, vì thao tác cuối cùng là phép nhân chứ không phải lời gọi đệ quy, nên không tối ưu được. Cách sửa là thêm một đối số tích lũy giữ kết quả nhân dồn, để phép nhân xảy ra khi tính đối số trước lời gọi đệ quy, và lời gọi đệ quy trở thành thao tác cuối cùng thực sự. Trình biên dịch sẽ dịch dạng này thành vòng lặp với biến tích lũy. Bài này cũng lưu ý hỗ trợ tối ưu lời gọi đuôi phụ thuộc ngôn ngữ và trình biên dịch, nên đừng mặc định nó luôn có mặt.
+Tin vui: trình biên dịch hiện đại tối ưu được một dạng đặc biệt. Lời gọi đuôi là lời gọi nằm ở thao tác cuối cùng của hàm.
+
+Hàm là đệ quy đuôi nếu các lời gọi đệ quy đều ở vị trí đuôi. Trình biên dịch bỏ qua việc tạo khung ngăn xếp, thậm chí viết lại thành vòng lặp.
+
+Điểm tinh tế: viết lời gọi ở cuối dòng chưa đủ. Ví dụ trả về $n \times fact(n-1)$ trông như đuôi nhưng không phải.
+
+Vì thao tác cuối cùng là phép nhân, không phải lời gọi. Nên dạng này không tối ưu được.
+
+Cách sửa là thêm đối số tích lũy giữ kết quả nhân dồn. Phép nhân xảy ra khi tính đối số, trước lời gọi đệ quy.
+
+Nhờ đó lời gọi đệ quy thành thao tác cuối thật sự. Trình biên dịch dịch dạng này thành vòng lặp với biến tích lũy.
+
+Lưu ý thêm: hỗ trợ tối ưu đuôi phụ thuộc ngôn ngữ và trình biên dịch. Đừng mặc định nó luôn có mặt.
 
 ## 6. Đệ quy tương hỗ
 
-Một hàm có thể gọi chính nó trực tiếp, nhưng cũng có thể gọi qua một hàm khác. Khi hai hay nhiều hàm gọi nhau thành vòng tròn thì đó là đệ quy tương hỗ. Đệ quy đuôi tương hỗ về lý thuyết cũng tối ưu được như tối ưu lời gọi đuôi, nhưng đa số trình biên dịch chỉ tối ưu đệ quy đuôi đơn giản.
+Hàm có thể gọi mình trực tiếp, hoặc gọi qua hàm khác. Khi hai hay nhiều hàm gọi nhau thành vòng tròn, đó là đệ quy tương hỗ.
 
-Bài này minh họa bằng hai hàm gọi qua lại nhau: hàm thứ nhất cộng đối số với kết quả gọi hàm thứ hai trên đối số trừ 1, hàm thứ hai co dần đối số qua mỗi vòng gọi cho tới khi chạm trường hợp dừng. Lần vết lời gọi với giá trị 7 cho thấy chuỗi gọi luân phiên giữa hai hàm. Kết luận của bài này rất dứt khoát: đệ quy tương hỗ còn khó theo dõi và khó tối ưu hơn đệ quy thông thường, nên chỉ dùng khi cấu trúc bài toán thực sự đòi hỏi.
+Về lý thuyết, đệ quy đuôi tương hỗ cũng tối ưu được. Nhưng đa số trình biên dịch chỉ tối ưu đệ quy đuôi đơn giản.
+
+Ví dụ hai hàm gọi qua lại nhau: hàm một cộng đối số với kết quả gọi hàm hai. Hàm hai co dần đối số tới khi chạm điều kiện dừng.
+
+Lần vết với giá trị 7 cho thấy chuỗi gọi luân phiên hai hàm. Kết luận rất dứt khoát: đệ quy tương hỗ khó theo dõi và khó tối ưu.
+
+Chỉ dùng nó khi cấu trúc bài toán thực sự đòi hỏi. Giống như hai người gọi điện qua lại, rất dễ rối.
 
 ## 7. So sánh và đánh đổi
 
-Đệ quy và lặp là hai cách diễn đạt cùng một quá trình tính toán. Đệ quy thắng ở sự rõ ràng khi cấu trúc bài toán vốn phân cấp; lặp thắng ở tính ổn định của bộ nhớ vì không phình ngăn xếp. Ghi nhớ là đánh đổi bộ nhớ lấy thời gian, nhưng phải canh chừng bộ nhớ đệm phình quá to.
+Đệ quy và lặp diễn đạt cùng một quá trình tính toán. Đệ quy thắng ở sự rõ ràng khi cấu trúc phân cấp.
+
+Lặp thắng ở bộ nhớ ổn định vì không phình ngăn xếp. Ghi nhớ là đánh đổi bộ nhớ lấy thời gian.
+
+Nhưng phải canh chừng bộ nhớ đệm phình quá to. Không có bữa trưa miễn phí ở đây.
 
 ## 8. Cạm bẫy tư duy
 
-Cạm bẫy đầu tiên là quên hoặc viết thiếu điều kiện dừng bao phủ mọi đầu vào, kể cả đầu vào không hợp lệ. Cạm bẫy thứ hai là dùng đệ quy cho bài toán có bài toán con gối nhau mà không ghi nhớ, tạo ra cây gọi phình theo hàm mũ. Cạm bẫy thứ ba là tưởng lời gọi đệ quy nằm cuối dòng mã thì mặc nhiên là đệ quy đuôi. Cạm bẫy thứ tư là mặc định trình biên dịch nào cũng tối ưu lời gọi đuôi. Cạm bẫy thứ năm là dùng đệ quy sâu cho dữ liệu lớn mà không ước lượng độ sâu ngăn xếp.
+Thứ nhất: quên điều kiện dừng, hoặc dừng không bao hết đầu vào lạ. Thứ hai: dùng đệ quy cho bài toán con gối nhau mà không ghi nhớ.
+
+Cây gọi sẽ phình theo hàm mũ. Thứ ba: tưởng lời gọi nằm cuối dòng mã là đệ quy đuôi.
+
+Thứ tư: mặc định trình biên dịch nào cũng tối ưu gọi đuôi. Thứ năm: đệ quy sâu cho dữ liệu lớn mà không ước lượng độ sâu ngăn xếp.
 
 ## 9. Ứng dụng của tư duy này
 
-Tư duy đệ quy là chìa khóa để đọc hiểu các thuật toán chia để trị, duyệt cây và đồ thị trong các bài sau. Thói quen lần vết bằng lời trước khi cài đặt giúp phát hiện sớm điều kiện dừng thiếu và nguy cơ tính lại.
+Tư duy đệ quy là chìa khóa đọc thuật toán chia để trị. Nó cũng mở cửa các thuật toán duyệt cây và đồ thị.
 
-## 10. Tóm tắt + Sau bài này bạn hiểu được gì
+Thói quen lần vết bằng lời trước khi cài đặt rất đáng giá. Nó phát hiện sớm điều kiện dừng thiếu và nguy cơ tính lại.
 
-Đệ quy giải bài toán lớn bằng cách gọi lại chính mình trên bài toán nhỏ hơn, với điều kiện dừng luôn tới được là yêu cầu bắt buộc. Tính lại bài toán con là cạm bẫy hiệu năng lớn nhất và được khắc phục bằng ghi nhớ kết quả. Đệ quy tỏa sáng khi bản chất bài toán vốn phân cấp như duyệt cây. Đệ quy đuôi cho phép trình biên dịch viết lại thành vòng lặp nếu lời gọi đệ quy thực sự là thao tác cuối cùng. Đệ quy tương hỗ khó theo dõi và khó tối ưu nên hạn chế dùng.
+## Tóm tắt
 
-Sau bài này bạn hiểu được:
-
-- Vai trò của điều kiện dừng và vì sao nó phải bao phủ cả đầu vào không hợp lệ.
-- Cách lần vết bằng lời để phát hiện tính lại, qua ví dụ Fibonacci của 4.
-- Ý tưởng ghi nhớ kết quả và cái giá bộ nhớ của nó.
-- Vì sao duyệt cây là miền đất tự nhiên của đệ quy, cùng ba thứ tự duyệt trước, giữa và sau.
-- Điều kiện để một hàm thực sự là đệ quy đuôi và vai trò của đối số tích lũy.
-
-Tự kiểm: vì sao lời gọi với đối số âm 1 mà thiếu kiểm tra không âm lại gây tràn ngăn xếp? Phân biệt lời gọi đệ quy nằm cuối dòng mã với lời gọi đệ quy ở vị trí đuôi thực sự. Vì sao đệ quy tương hỗ khó tối ưu hơn đệ quy thông thường?
+- Đệ quy gọi lại chính mình trên bài nhỏ hơn, điều kiện dừng luôn tới được là bắt buộc.
+- Tính lại bài toán con là cạm bẫy lớn nhất, khắc phục bằng ghi nhớ kết quả.
+- Đệ quy tỏa sáng khi bài toán vốn phân cấp, như duyệt cây trước, giữa, sau.
+- Đệ quy đuôi cho phép viết lại thành vòng lặp nếu lời gọi là thao tác cuối thật sự.
+- Đệ quy tương hỗ khó theo dõi và khó tối ưu nên hạn chế dùng.

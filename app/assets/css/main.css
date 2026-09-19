@@ -4,6 +4,12 @@
 
 @source "../../../content/**/*";
 
+@theme {
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
 :root {
   --ui-radius: 0rem;
 }
@@ -17,6 +23,21 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.7;
+}
+
+/* Bricolage chỉ cho heading/title, còn lại dùng Roboto */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
 }
 
 ::selection {
@@ -52,6 +73,18 @@ html {
   font-weight: 700;
   letter-spacing: -0.01em;
   margin-top: 2rem;
+}
+
+/* Bài tập: mỗi "### Bài N" là một khối đề riêng, có vạch nhấn bên trái */
+.prose h3[id^="bài-"] {
+  margin-top: 2.5rem;
+  padding: 0.6rem 0 0.6rem 1rem;
+  border-left: 3px solid var(--ui-primary);
+  background: color-mix(in oklab, var(--ui-primary) 6%, transparent);
+}
+
+.prose strong {
+  color: var(--ui-text-highlighted);
 }
 
 /* Nuxt UI đã có sẵn prose components (ProseTable, ProseBlockquote,

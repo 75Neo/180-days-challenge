@@ -26,6 +26,12 @@ export default defineNuxtConfig({
       },
     },
   },
+  fonts: {
+    defaults: {
+      weights: [400, 500, 600, 700, 800],
+      subsets: ["latin", "latin-ext", "vietnamese"],
+    },
+  },
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://180-days-challenge.vercel.app",

@@ -2,7 +2,7 @@
 useSeoDefaults({
   title: "180 ngày cai nghiện vibe code",
   description:
-    "Mỗi ngày một thử thách: cấu trúc dữ liệu, thuật toán và design patterns từ dễ đến khó, kèm outcome và rubric.",
+    "Mỗi ngày một thử thách: cấu trúc dữ liệu, thuật toán và design patterns từ dễ đến khó, kèm đặc tả bài tập và tiêu chí hoàn thành.",
   path: "/",
 });
 
@@ -38,41 +38,10 @@ const totalHours = computed(() => {
   return Math.round(sum / 60);
 });
 
-const startSteps = [
-  {
-    title: "Đọc bài nền tảng",
-    desc: "Bắt đầu với Big-O và Thuật toán — mỗi bài khoảng 45 phút, chỉ lý thuyết, không code.",
-    icon: "i-lucide-book-open",
-    to: "/fundamentals",
-    linkLabel: "Xem 11 bài nền tảng",
-  },
-  {
-    title: "Làm Ngày 1",
-    desc: "Chủ đề mảng và danh sách. Mỗi ngày chỉ mất 45–60 phút, có bài tập 3 mức và rubric tự chấm.",
-    icon: "i-lucide-play",
-    to: "/challenges/1.mang-va-danh-sach",
-    linkLabel: "Vào Ngày 1",
-  },
-  {
-    title: "Đi theo thứ tự ngày",
-    desc: "Độ khó tăng dần từ dễ tới chuyên gia. Mỗi bài ghi rõ cần học trước bài nào, link sẵn để ôn lại.",
-    icon: "i-lucide-list-ordered",
-    to: "/challenges",
-    linkLabel: "Xem 180 ngày",
-  },
-  {
-    title: "Tự đối chiếu và ghi note",
-    desc: "Cuối mỗi bài có mục “sau ngày này bạn làm được gì” — web tĩnh không lưu tiến độ, bạn tự đối chiếu và ghi vào note cá nhân.",
-    icon: "i-lucide-notebook-pen",
-    to: "/challenges",
-    linkLabel: "Xem thử thách",
-  },
-];
-
 const rules = [
   {
     title: "Tự tạo repo riêng",
-    desc: "Web này là trang tĩnh, không tài khoản, không lưu tiến độ. Bạn tự lập một repo để lưu code, note và đánh dấu ngày đã xong.",
+    desc: "Web tĩnh, không tài khoản, không lưu tiến độ. Repo của bạn giữ code, note và dấu ngày đã xong.",
     icon: "i-lucide-folder-git-2",
   },
   {
@@ -82,12 +51,12 @@ const rules = [
   },
   {
     title: "Tự code bằng tay",
-    desc: "Mọi bài tập tự gõ, tự chạy, tự sửa lỗi. Đọc hiểu code người khác không thay được việc tự viết.",
+    desc: "Mọi bài tập tự gõ, tự chạy, tự sửa lỗi. Đọc code người khác không thay được việc tự viết.",
     icon: "i-lucide-keyboard",
   },
   {
     title: "Không dùng AI để code",
-    desc: "Cấm paste code do AI viết vào bài làm. Chỉ được hỏi AI khi đã tự thử mà vẫn bí — và vẫn phải tự viết lại.",
+    desc: "Không paste code AI vào bài làm. Bí thật thì hỏi ý tưởng, rồi tự viết lại từ đầu.",
     icon: "i-lucide-bot-off",
   },
 ];
@@ -95,226 +64,209 @@ const rules = [
 const dayParts = [
   {
     title: "Ôn tiên quyết",
-    desc: "Link thẳng tới bài nền tảng cần nhớ trước khi học.",
+    desc: "Link thẳng tới bài nền tảng cần nhớ.",
     icon: "i-lucide-book-open",
   },
-  {
-    title: "Học trọng tâm",
-    desc: "Ý tưởng thuật toán, độ phức tạp, bảng so sánh đánh đổi.",
-    icon: "i-lucide-brain",
-  },
+  { title: "Học trọng tâm", desc: "Ý tưởng, độ phức tạp, bảng đánh đổi.", icon: "i-lucide-brain" },
   {
     title: "Làm bài tập",
-    desc: "3 mức từ cơ bản tới thử thách, kèm ví dụ kiểm thử.",
-    icon: "i-lucide-pen-line",
+    desc: "Đặc tả hàm, ràng buộc, test mẫu. Từ cơ bản tới nâng cao.",
+    icon: "i-lucide-code-xml",
   },
   {
-    title: "Tự chấm rubric",
-    desc: "Bảng điểm chi tiết, biết mình đạt hay chưa.",
-    icon: "i-lucide-target",
+    title: "Tự kiểm tra",
+    desc: "Checklist tiêu chí hoàn thành và câu hỏi ôn tập.",
+    icon: "i-lucide-list-checks",
   },
 ];
 
-const phases = [
-  {
-    range: "Ngày 1–21",
-    title: "Khởi động",
-    desc: "Học mảng, danh sách liên kết, ngăn xếp, hàng đợi, cây, đệ quy, sắp xếp, tìm kiếm, cùng các pattern cơ bản như SOLID, Strategy, Observer. Chốt chặng bằng mini project đo hiệu năng sắp xếp.",
-    icon: "i-lucide-sprout",
-  },
-  {
-    range: "Ngày 22–64",
-    title: "Nền tảng mở rộng",
-    desc: "Học heap, bảng băm, trie, Bloom filter, Union-Find, cache LRU, đồ thị với BFS/DFS/Dijkstra, gom cụm và học máy nhập môn, cùng các pattern Factory, Command, Template.",
-    icon: "i-lucide-boxes",
-  },
-  {
-    range: "Ngày 65–118",
-    title: "Nâng cao",
-    desc: "Học quy hoạch động, tối ưu SA/GA, đồ thị khó, mạng nơ-ron, Transformer, cùng các pattern State, Proxy, MVC và 3 project vận dụng patterns.",
-    icon: "i-lucide-brain",
-  },
-  {
-    range: "Ngày 119–125",
-    title: "Chuyên gia",
-    desc: "Học các chủ đề khó: tìm kiếm tương đồng, đồ thị phẳng, vẽ đồ thị, giải thuật di truyền nâng cao, Interpreter/Visitor và project tổng hợp.",
-    icon: "i-lucide-share-2",
-  },
-  {
-    range: "Ngày 126–180",
-    title: "Dự án thực tế",
-    desc: "Làm app hoàn chỉnh như autocomplete, search engine, rate limiter, pipeline phát hiện gian lận, rồi ôn tập, system design cơ bản và demo day tổng kết.",
-    icon: "i-lucide-rocket",
-  },
+const day1Api = [
+  ["da_init(a, cap)", "O(1)"],
+  ["da_push(a, x)", "O(1)*"],
+  ["da_insert(a, i, x)", "O(n)"],
+  ["da_erase(a, i)", "O(n)"],
+  ["da_get(a, i, &out)", "O(1)"],
+  ["da_destroy(a)", "O(1)"],
 ];
 </script>
 
 <template>
   <div>
-    <!-- Hero: một cột, căn trái -->
-    <UContainer class="py-14 md:py-20">
-      <UBadge color="primary" variant="soft" class="mb-4">180 ngày cai nghiện vibe code</UBadge>
-      <h1 class="max-w-3xl text-4xl font-bold tracking-tight text-balance md:text-5xl">
-        Cai nghiện vibe code, từng ngày một
-      </h1>
-      <p class="text-muted mt-4 max-w-2xl text-lg leading-relaxed">
-        Mỗi ngày một bài code nhỏ — Python, JavaScript, C++ hay ngôn ngữ nào cũng được. Hiểu
-        thật thứ mình viết, bỏ thói paste mù.
-      </p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <UButton
-          to="/challenges/1.mang-va-danh-sach"
-          icon="i-lucide-play"
-          label="Bắt đầu ngày 1"
-          size="lg"
-        />
-        <UButton
-          to="/fundamentals"
-          color="neutral"
-          variant="soft"
-          trailing-icon="i-lucide-arrow-right"
-          label="Học nền tảng trước"
-          size="lg"
-        />
-      </div>
-      <dl class="mt-10 grid max-w-2xl grid-cols-3 gap-4">
-        <div class="rounded-xl border border-muted bg-elevated/40 p-4">
-          <dt class="text-muted text-xs">Thử thách</dt>
-          <dd class="mt-1 text-2xl font-bold tabular-nums">{{ challenges?.length ?? 180 }}</dd>
-        </div>
-        <div class="rounded-xl border border-muted bg-elevated/40 p-4">
-          <dt class="text-muted text-xs">Bài nền tảng</dt>
-          <dd class="mt-1 text-2xl font-bold tabular-nums">{{ fundamentals?.length ?? 11 }}</dd>
-        </div>
-        <div class="rounded-xl border border-muted bg-elevated/40 p-4">
-          <dt class="text-muted text-xs">Giờ thực hành</dt>
-          <dd class="mt-1 text-2xl font-bold tabular-nums">~{{ totalHours }}</dd>
-        </div>
-      </dl>
-    </UContainer>
-
-    <USeparator />
-
-    <!-- Cách bắt đầu -->
-    <UContainer class="py-14">
-      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Cách bắt đầu</p>
-      <h2 class="mt-2 text-2xl font-bold tracking-tight md:text-3xl">4 bước vào challenge</h2>
-      <div class="mt-8 grid gap-4 md:grid-cols-2">
-        <div
-          v-for="(s, i) in startSteps"
-          :key="s.title"
-          class="rounded-xl border border-muted bg-elevated/40 p-5"
+    <UContainer class="grid items-center gap-12 py-14 md:py-20 lg:grid-cols-[1.1fr_1fr]">
+      <div>
+        <UBadge color="primary" variant="soft" class="mb-5">180 ngày cai nghiện vibe code</UBadge>
+        <h1
+          class="text-highlighted max-w-xl text-4xl leading-[1.15] font-bold tracking-tight text-balance md:text-5xl lg:text-6xl"
         >
-          <div class="flex items-center gap-3">
-            <span
-              class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 font-bold text-primary tabular-nums"
-            >
-              {{ i + 1 }}
-            </span>
-            <UIcon :name="s.icon" class="size-5 text-primary" />
-            <p class="font-semibold">{{ s.title }}</p>
-          </div>
-          <p class="text-muted mt-3 text-sm leading-relaxed">{{ s.desc }}</p>
-          <UButton :to="s.to" variant="link" class="mt-2 px-0" :label="s.linkLabel" trailing-icon="i-lucide-arrow-right" />
-        </div>
-      </div>
-    </UContainer>
-
-    <USeparator />
-
-    <!-- Luật chơi -->
-    <UContainer class="py-14">
-      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Luật chơi</p>
-      <h2 class="mt-2 text-2xl font-bold tracking-tight md:text-3xl">4 quy tắc bắt buộc</h2>
-      <p class="text-muted mt-2 max-w-2xl">
-        Challenge này chỉ có tác dụng nếu bạn tự làm thật. Không ai chấm bài cho bạn — repo và
-        note của bạn chính là bằng chứng.
-      </p>
-      <div class="mt-8 grid gap-4 md:grid-cols-2">
-        <div
-          v-for="(r, i) in rules"
-          :key="r.title"
-          class="border border-muted bg-elevated/40 p-5"
-        >
-          <div class="flex items-center gap-3">
-            <span
-              class="flex size-9 shrink-0 items-center justify-center bg-error/10 font-bold text-error tabular-nums"
-            >
-              {{ i + 1 }}
-            </span>
-            <UIcon :name="r.icon" class="size-5 text-error" />
-            <p class="font-semibold">{{ r.title }}</p>
-          </div>
-          <p class="text-muted mt-3 text-sm leading-relaxed">{{ r.desc }}</p>
-        </div>
-      </div>
-    </UContainer>
-
-    <USeparator />
-
-    <!-- Khung mỗi ngày -->
-    <UContainer class="py-14">
-      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Phương pháp</p>
-      <h2 class="mt-2 text-2xl font-bold tracking-tight md:text-3xl">Mỗi ngày học gồm 4 phần</h2>
-      <p class="text-muted mt-2 max-w-2xl">
-        Mọi bài trong 180 ngày đều theo cùng một khung, để bạn luôn biết mình đang ở đâu.
-      </p>
-      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <div
-          v-for="d in dayParts"
-          :key="d.title"
-          class="rounded-xl border border-muted bg-elevated/40 p-5"
-        >
-          <UIcon :name="d.icon" class="size-5 text-primary" />
-          <p class="mt-3 font-semibold">{{ d.title }}</p>
-          <p class="text-muted mt-1 text-sm leading-relaxed">{{ d.desc }}</p>
-        </div>
-      </div>
-    </UContainer>
-
-    <USeparator />
-
-    <!-- Lộ trình -->
-    <UContainer class="py-14">
-      <p class="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Lộ trình</p>
-      <h2 class="mt-2 text-2xl font-bold tracking-tight md:text-3xl">5 chặng, mỗi chặng học gì</h2>
-      <div class="mt-8 space-y-4">
-        <NuxtLink
-          v-for="(p, i) in phases"
-          :key="p.range"
-          to="/challenges"
-          class="group flex gap-4 rounded-xl border border-muted bg-elevated/40 p-5 transition-colors hover:border-primary/40 hover:bg-elevated"
-        >
-          <span class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
-            <UIcon :name="p.icon" class="size-5 text-primary" />
-          </span>
-          <div class="min-w-0">
-            <p class="text-xs font-semibold text-primary tabular-nums">
-              Chặng {{ i + 1 }} · {{ p.range }}
-            </p>
-            <p class="mt-0.5 text-lg font-bold group-hover:text-primary">{{ p.title }}</p>
-            <p class="text-muted mt-1 text-sm leading-relaxed">{{ p.desc }}</p>
-          </div>
-        </NuxtLink>
-      </div>
-    </UContainer>
-
-    <!-- CTA cuối -->
-    <UContainer class="pb-16">
-      <div class="rounded-2xl border border-primary/25 bg-primary/5 p-6 md:p-8">
-        <h2 class="text-xl font-bold tracking-tight md:text-2xl">Sẵn sàng cho ngày đầu tiên?</h2>
-        <p class="text-muted mt-2 max-w-2xl text-sm leading-relaxed md:text-base">
-          Đọc 2 bài nền tảng về thuật toán và Big-O, rồi làm thử thách mảng và danh sách — khoảng
-          45 phút.
+          Tự viết từng dòng. Hiểu từng dòng.
+        </h1>
+        <p class="text-muted mt-5 max-w-lg text-lg leading-relaxed">
+          Mỗi ngày một bài: cấu trúc dữ liệu, thuật toán, design pattern. Đề rõ, test rõ, tự code
+          bằng tay.
         </p>
-        <div class="mt-5 flex flex-wrap gap-3">
+        <div class="mt-8 flex flex-wrap gap-3">
           <UButton
             to="/challenges/1.mang-va-danh-sach"
             icon="i-lucide-play"
             label="Bắt đầu ngày 1"
+            size="xl"
           />
-          <UButton to="/fundamentals" color="neutral" variant="soft" label="Xem nền tảng" />
+          <UButton
+            to="/fundamentals"
+            color="neutral"
+            variant="outline"
+            trailing-icon="i-lucide-arrow-right"
+            label="Đọc nền tảng"
+            size="xl"
+          />
         </div>
+      </div>
+
+      <NuxtLink
+        to="/challenges/1.mang-va-danh-sach#bài-tập"
+        class="group border-default bg-elevated/40 hover:border-primary/60 block border transition-colors"
+        aria-label="Xem bài tập ngày 1"
+      >
+        <div class="border-default flex items-center justify-between border-b px-5 py-3">
+          <p class="font-display text-sm font-semibold">
+            <span class="text-primary font-mono">001</span>
+            <span class="text-muted"> / </span>
+            Dynamic Array bằng C
+          </p>
+          <UBadge color="success" variant="subtle" size="sm">Dễ</UBadge>
+        </div>
+        <div class="px-5 py-4">
+          <p class="text-muted mb-3 text-xs">Bài 1: cài đặt đủ API, không leak, không crash.</p>
+          <ul class="font-mono text-sm">
+            <li v-for="[fn, big] in day1Api" :key="fn" class="flex justify-between gap-4 py-1.5">
+              <span class="text-highlighted">{{ fn }}</span>
+              <span class="text-primary tabular-nums">{{ big }}</span>
+            </li>
+          </ul>
+        </div>
+        <p
+          class="border-default text-muted group-hover:text-primary flex items-center gap-1.5 border-t px-5 py-3 text-sm transition-colors"
+        >
+          Xem đề đầy đủ <UIcon name="i-lucide-arrow-right" class="size-4" />
+        </p>
+      </NuxtLink>
+    </UContainer>
+
+    <div class="border-default bg-elevated/30 border-y">
+      <UContainer>
+        <dl class="grid grid-cols-3 divide-x divide-(--ui-border)">
+          <div class="py-6 pr-4">
+            <dt class="text-muted text-xs md:text-sm">Thử thách</dt>
+            <dd class="text-highlighted mt-1 font-mono text-2xl font-bold tabular-nums md:text-4xl">
+              {{ challenges?.length ?? 180 }}
+            </dd>
+          </div>
+          <div class="px-4 py-6">
+            <dt class="text-muted text-xs md:text-sm">Bài nền tảng</dt>
+            <dd class="text-highlighted mt-1 font-mono text-2xl font-bold tabular-nums md:text-4xl">
+              {{ fundamentals?.length ?? 11 }}
+            </dd>
+          </div>
+          <div class="py-6 pl-4">
+            <dt class="text-muted text-xs md:text-sm">Giờ thực hành</dt>
+            <dd class="text-highlighted mt-1 font-mono text-2xl font-bold tabular-nums md:text-4xl">
+              ~{{ totalHours }}
+            </dd>
+          </div>
+        </dl>
+      </UContainer>
+    </div>
+
+    <UContainer class="py-16 md:py-24">
+      <h2 class="text-highlighted text-3xl font-bold tracking-tight md:text-4xl">4 luật chơi</h2>
+      <p class="text-muted mt-3 max-w-2xl text-lg">
+        Không ai chấm bài cho bạn. Repo và note của bạn là bằng chứng.
+      </p>
+      <ol class="mt-10 grid gap-x-12 gap-y-10 md:grid-cols-2">
+        <li v-for="(r, i) in rules" :key="r.title" class="flex gap-5">
+          <span class="text-primary font-mono text-4xl leading-none font-bold tabular-nums">
+            {{ i + 1 }}
+          </span>
+          <div>
+            <p class="font-display text-highlighted flex items-center gap-2 text-lg font-semibold">
+              {{ r.title }}
+              <UIcon :name="r.icon" class="text-muted size-4" />
+            </p>
+            <p class="text-muted mt-1.5 leading-relaxed">{{ r.desc }}</p>
+          </div>
+        </li>
+      </ol>
+    </UContainer>
+
+    <div class="bg-elevated/40 border-default border-y">
+      <UContainer class="py-16 md:py-20">
+        <h2 class="text-highlighted text-3xl font-bold tracking-tight md:text-4xl">
+          Một ngày học, 45-60 phút
+        </h2>
+        <ol class="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
+          <li
+            v-for="(d, i) in dayParts"
+            :key="d.title"
+            class="lg:border-default relative lg:border-l lg:px-6 lg:first:border-l-0 lg:first:pl-0"
+          >
+            <span class="bg-primary text-inverted inline-flex size-10 items-center justify-center">
+              <UIcon :name="d.icon" class="size-5" />
+            </span>
+            <p class="font-display text-highlighted mt-4 font-semibold">
+              <span class="text-muted font-mono text-sm">{{ i + 1 }}.</span> {{ d.title }}
+            </p>
+            <p class="text-muted mt-1 text-sm leading-relaxed">{{ d.desc }}</p>
+          </li>
+        </ol>
+      </UContainer>
+    </div>
+
+    <UContainer class="py-16 md:py-24">
+      <h2 class="text-highlighted text-3xl font-bold tracking-tight md:text-4xl">
+        Lộ trình 5 chặng
+      </h2>
+      <p class="text-muted mt-3 max-w-2xl text-lg">
+        Độ khó tăng dần. Bấm một chặng để xem các ngày.
+      </p>
+      <ol class="border-default mt-10 border-l-2">
+        <li v-for="(p, i) in phases" :key="p.title" class="relative pb-2 pl-8 last:pb-0">
+          <span class="bg-primary absolute top-6 -left-[7px] size-3" aria-hidden="true" />
+          <NuxtLink
+            :to="`/challenges?phase=${i}`"
+            class="group hover:bg-elevated/60 grid gap-2 p-4 transition-colors md:grid-cols-[180px_1fr]"
+          >
+            <div>
+              <p class="text-primary font-mono text-sm tabular-nums">
+                Ngày {{ p.from }}-{{ p.to }}
+              </p>
+              <p class="font-display text-highlighted group-hover:text-primary mt-0.5 text-xl font-bold">
+                {{ p.title }}
+              </p>
+            </div>
+            <p class="text-muted leading-relaxed">{{ p.desc }}</p>
+          </NuxtLink>
+        </li>
+      </ol>
+    </UContainer>
+
+    <UContainer class="pb-20">
+      <div
+        class="border-primary/30 bg-primary/5 flex flex-col items-start justify-between gap-6 border p-8 md:flex-row md:items-center md:p-10"
+      >
+        <div>
+          <h2 class="text-highlighted text-2xl font-bold tracking-tight md:text-3xl">
+            Sẵn sàng cho ngày đầu tiên?
+          </h2>
+          <p class="text-muted mt-2 max-w-xl">
+            Ôn Big-O, mở editor, tự cài đặt Dynamic Array bằng C. Khoảng 60 phút.
+          </p>
+        </div>
+        <UButton
+          to="/challenges/1.mang-va-danh-sach"
+          icon="i-lucide-play"
+          label="Bắt đầu ngày 1"
+          size="xl"
+        />
       </div>
     </UContainer>
   </div>

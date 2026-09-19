@@ -7,12 +7,10 @@ const { data: all } = await useAsyncData("fundamentals-all", () =>
 );
 
 const sorted = computed(() => {
-  const list = ((all.value ?? []) as Record<string, any>[]).slice();
-  list.sort((a, b) => String(a.title ?? "").localeCompare(String(b.title ?? ""), "vi"));
-  return list;
+  return sortFundamentals((all.value ?? []) as Record<string, any>[]);
 });
-const page = computed(() => sorted.value.find((p) => stemOf(p) === slug.value));
 const idx = computed(() => sorted.value.findIndex((p) => stemOf(p) === slug.value));
+const page = computed(() => sorted.value[idx.value]);
 const prev = computed(() => (idx.value > 0 ? sorted.value[idx.value - 1] : null));
 const next = computed(() =>
   idx.value >= 0 && idx.value < sorted.value.length - 1 ? sorted.value[idx.value + 1] : null,
@@ -62,82 +60,77 @@ useHead({
 </script>
 
 <template>
-  <UContainer class="py-10">
-    <div v-if="page">
-      <UBreadcrumb
-        :items="[{ label: 'Nền tảng', to: '/fundamentals' }, { label: page.title }]"
-        class="mb-5"
-      />
-      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-info">
-        Lý thuyết nền tảng
-      </p>
-      <h1 class="mt-3 text-4xl font-bold tracking-tight text-balance md:text-5xl">
-        {{ page.title }}
-      </h1>
-      <p class="text-muted mt-4 text-lg leading-relaxed">{{ page.description }}</p>
-      <div class="mt-5 flex flex-wrap items-center gap-2">
-        <span
-          v-if="page.estimatedMinutes"
-          class="text-muted inline-flex items-center gap-1.5 text-sm"
-        >
-          <UIcon name="i-lucide-timer" class="size-4" /> ~{{ page.estimatedMinutes }} phút đọc
-        </span>
-        <UBadge v-for="t in page.tags?.slice(0, 4) ?? []" :key="t" color="neutral" variant="outline"
-          >#{{ t }}</UBadge
-        >
-      </div>
+  <UContainer>
+    <UPage v-if="page">
+      <UPageHeader :title="page.title" :description="page.description">
+        <template #headline>
+          <UBreadcrumb
+            :items="[{ label: 'Nền tảng', to: '/fundamentals' }, { label: 'Lý thuyết' }]"
+          />
+        </template>
+        <div class="mt-5 flex flex-wrap items-center gap-2">
+          <UBadge
+            v-if="page.estimatedMinutes"
+            color="neutral"
+            variant="outline"
+            icon="i-lucide-timer"
+          >
+            ~{{ page.estimatedMinutes }} phút đọc
+          </UBadge>
+          <UBadge
+            v-for="t in page.tags?.slice(0, 4) ?? []"
+            :key="t"
+            color="neutral"
+            variant="subtle"
+          >
+            #{{ t }}
+          </UBadge>
+        </div>
+      </UPageHeader>
 
-      <USeparator class="my-8" />
+      <UPageBody>
+        <div class="prose max-w-none">
+          <ContentRenderer :value="page" />
+        </div>
 
-      <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_240px]">
-        <article class="min-w-0">
-          <div class="prose max-w-none">
-            <ContentRenderer :value="page" />
-          </div>
+        <USeparator />
 
-          <div class="mt-8 grid gap-3 sm:grid-cols-2">
-            <NuxtLink
-              v-if="prev"
-              :to="`/fundamentals/${stemOf(prev)}`"
-              class="rounded-xl border border-muted p-4 transition-colors hover:border-info/50"
-            >
-              <p class="text-muted flex items-center gap-1 text-xs">
-                <UIcon name="i-lucide-arrow-left" class="size-3" /> Bài trước
-              </p>
-              <p class="mt-1 text-sm font-semibold">{{ prev.title }}</p>
-            </NuxtLink>
-            <span v-else />
-            <NuxtLink
-              v-if="next"
-              :to="`/fundamentals/${stemOf(next)}`"
-              class="rounded-xl border border-muted p-4 text-right transition-colors hover:border-info/50"
-            >
-              <p class="text-muted flex items-center justify-end gap-1 text-xs">
-                Bài tiếp <UIcon name="i-lucide-arrow-right" class="size-3" />
-              </p>
-              <p class="mt-1 text-sm font-semibold">{{ next.title }}</p>
-            </NuxtLink>
-            <span v-else />
-          </div>
-        </article>
+        <div class="grid gap-3 sm:grid-cols-2">
+          <NuxtLink
+            v-if="prev"
+            :to="`/fundamentals/${stemOf(prev)}`"
+            class="group border-muted hover:border-primary/50 border p-4 transition-colors"
+          >
+            <p class="text-muted flex items-center gap-1 text-xs">
+              <UIcon name="i-lucide-arrow-left" class="size-3" /> Bài trước
+            </p>
+            <p class="font-display group-hover:text-primary mt-1 text-sm font-semibold">{{ prev.title }}</p>
+          </NuxtLink>
+          <span v-else />
+          <NuxtLink
+            v-if="next"
+            :to="`/fundamentals/${stemOf(next)}`"
+            class="group border-muted hover:border-primary/50 border p-4 text-right transition-colors"
+          >
+            <p class="text-muted flex items-center justify-end gap-1 text-xs">
+              Bài tiếp <UIcon name="i-lucide-arrow-right" class="size-3" />
+            </p>
+            <p class="font-display group-hover:text-primary mt-1 text-sm font-semibold">{{ next.title }}</p>
+          </NuxtLink>
+        </div>
+      </UPageBody>
 
-        <aside class="hidden lg:block">
-          <div class="sticky top-24">
-            <UContentToc
-              v-if="page.body?.toc?.links"
-              :links="page.body.toc.links"
-              title="Trong bài này"
-            />
-          </div>
-        </aside>
-      </div>
-    </div>
+      <template v-if="page.body?.toc?.links?.length" #right>
+        <UContentToc :links="page.body.toc.links" title="Trong bài này" highlight />
+      </template>
+    </UPage>
 
     <UEmpty
       v-else
       icon="i-lucide-book-x"
       title="Không tìm thấy bài nền tảng"
       description="Bài lý thuyết này không tồn tại."
+      class="py-24"
     >
       <template #actions>
         <UButton to="/fundamentals" label="Về danh sách" />

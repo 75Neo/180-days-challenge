@@ -8,8 +8,6 @@ estimatedMinutes: 45
 tags: [thiet-ke, kiem-chung, explainability, fundamentals]
 ---
 
-# Thiết kế và kiểm chứng thuật toán
-
 ## 1. Tổng quan
 
 Thiết kế mà không kiểm chứng chẳng khác xây cầu không thử tải. Khung đầy đủ gồm bốn phần.
@@ -50,19 +48,17 @@ Thuật toán xấp xỉ đơn giản hóa bài toán bằng giả định khi t
 
 Ví dụ minh họa là người bán hàng rong ra đời năm 1930. Tìm hành trình ngắn nhất thăm mỗi thành phố một lần rồi về điểm xuất phát.
 
-Cách trực diện liệt kê mọi hoán vị rồi chọn rẻ nhất. Nhưng vượt quá 30 thành phố thì không quản lý nổi.
+Cách trực diện liệt kê mọi hoán vị rồi chọn rẻ nhất: $(n-1)!$ tour. Với 15 thành phố đã là khoảng $8.7 \cdot 10^{10}$ tour, vét cạn không còn khả thi. Quy hoạch động Held-Karp đẩy ngưỡng lên khoảng 25-30 thành phố, sau đó phải dùng xấp xỉ.
 
 ## 4. Kiểm chứng bằng độ đo và trường hợp biên
 
 Kiểm chứng là xác nhận thuật toán thực sự giải đúng bài toán. Quy trình phải thử càng nhiều giá trị và kiểu đầu vào càng tốt.
 
-Với học có giám sát, dữ liệu gán nhãn sẵn đóng vai trò chân lý. Ta đo độ lệch qua độ đo như độ chính xác, độ bao phủ hay độ chuẩn xác.
+Với học có giám sát, dữ liệu gán nhãn sẵn đóng vai trò chân lý. Ta đo độ lệch qua độ đo như accuracy (tỉ lệ đúng), precision (độ chuẩn) và recall (độ phủ).
 
 Đôi khi đầu ra đúng không phải một giá trị đơn mà là một khoảng. Thiết kế lặp cải tiến dần cho tới khi nằm trong khoảng yêu cầu.
 
-Hai khái niệm nền cho họ bài khó. Thuật toán đa thức có thời gian chạy $O(n^k)$ với $k$ hằng số.
-
-Chứng chỉ là nghiệm ứng viên sinh cuối mỗi vòng lặp. Khi nó đáp ứng yêu cầu thì chọn làm nghiệm cuối.
+Với thuật toán lặp (tối ưu, học máy), mỗi vòng sinh một nghiệm ứng viên. Kiểm chứng gồm hai việc: kiểm tra từng nghiệm ứng viên có hợp lệ không, và theo dõi chất lượng qua các vòng để biết khi nào dừng.
 
 Nội dung không thể thiếu là trường hợp biên. Đó là khi thuật toán vận hành ở cực trị tham số, hiếm gặp nhưng có thể gây sụp đổ.
 
@@ -114,10 +110,44 @@ Yêu cầu giải thích được ngày càng vào đặc tả hệ trọng yế
 
 Hỏi ba câu này sớm giúp tránh sửa lớn về sau. Rẻ hơn nhiều so với vá khi đã triển khai.
 
+## ✍️ Tự kiểm tra
+
+Tự trả lời trước, rồi mở đáp án để đối chiếu.
+
+**Câu 1.** Ba mối quan tâm khi thiết kế, theo thứ tự ưu tiên?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Đúng đắn, tối ưu, khả năng mở rộng.
+::
+
+**Câu 2.** Làm sao kiểm thử một thuật toán ngẫu nhiên?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Cố định seed để tái lập, và kiểm tra tính chất thống kê qua nhiều lần chạy thay vì so một đầu ra cố định.
+::
+
+**Câu 3.** Kể 4 trường hợp biên khi kiểm thử hàm sắp xếp.
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Mảng rỗng, 1 phần tử, toàn phần tử bằng nhau, đã sắp xếp hoặc sắp ngược. Thêm: số âm, giá trị lớn nhất của kiểu dữ liệu.
+::
+
+**Câu 4.** TSP 20 thành phố: vét cạn có khả thi không?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Không. $19! \approx 1.2 \cdot 10^{17}$ tour. Held-Karp $O(n^2 2^n)$ chỉ khoảng $4 \cdot 10^8$ bước nên vẫn chạy được.
+::
+
+**Câu 5.** LIME giải thích một dự đoán bằng cách nào?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Thay đổi nhẹ đầu vào quanh điểm cần giải thích, quan sát đầu ra đổi ra sao, rồi khớp một mô hình đơn giản cục bộ để đo ảnh hưởng từng đặc trưng.
+::
+
 ## Tóm tắt
 
 - Thiết kế tốt trả lời ba câu hỏi: đúng đắn, tối ưu và mở rộng, theo quá trình lặp.
 - Bốn họ tất định, ngẫu nhiên, chính xác, xấp xỉ cần logic kiểm chứng khác nhau.
-- Kiểm chứng dùng độ đo so với chân lý, chứng chỉ và bao phủ trường hợp biên.
-- Người bán hàng rong quá 30 thành phố minh họa ngưỡng phải chuyển sang xấp xỉ.
+- Kiểm chứng dùng độ đo so với chân lý, kiểm tra nghiệm ứng viên và bao phủ trường hợp biên.
+- Người bán hàng rong minh họa ngưỡng phải chuyển sang xấp xỉ: vét cạn tắc ở khoảng 15 thành phố, quy hoạch động ở khoảng 30.
 - Tính giải thích được với LIME là bắt buộc với ứng dụng trọng yếu.

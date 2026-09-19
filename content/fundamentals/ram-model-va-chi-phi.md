@@ -8,8 +8,6 @@ estimatedMinutes: 40
 tags: [ram-model, chi-phi, ly-thuyet, fundamentals]
 ---
 
-# Mô hình RAM và chi phí tính toán
-
 ## 1. Tổng quan
 
 Mọi phát biểu về độ phức tạp đều đứng trên một mô hình tính toán. Đó là tập quy ước về phép nào tốn bao nhiêu chi phí.
@@ -45,6 +43,8 @@ Giả định bộ nhớ vô hạn nghe phi thực tế. Nhưng mô hình cố t
 
 Nhờ đó hiệu năng đo bằng số bước logic trên đầu vào cho trước. Lấy món nào trong tủ cũng tính một tay.
 
+Một giả định ngầm nữa: mỗi ô nhớ chứa một số có kích thước giới hạn (cỡ $\log n$ bit). Nếu cho phép số nguyên lớn tùy ý với phép nhân một bước, mô hình sẽ "gian lận": nhân hai số một triệu chữ số không thể tốn một bước.
+
 ## 4. Từ đếm bước sang bậc tăng trưởng
 
 Có cách đếm bước rồi, ta hỏi tiếp: cải thiện nào mới đáng kể. Biến động nhỏ về số bước hiếm khi có ý nghĩa.
@@ -63,7 +63,7 @@ Hai mặt gắn chặt thành một khung phân tích hoàn chỉnh. Chi tiết 
 
 Từ định nghĩa chặn trên, bài này rút ra hệ quả thực tiễn sâu sắc. Thứ nhất, ta chỉ quan tâm n rất lớn, không bận tâm n nhỏ.
 
-Ví dụ hàm mũ và hàm tuyến tính: với x nhỏ hơn 1, hàm mũ còn nhỏ hơn. Nhưng khi x lớn, hàm mũ thắng áp đảo.
+Ví dụ so $100n$ với $n^2$: khi $n < 100$, $n^2$ còn nhỏ hơn. Nhưng từ $n > 100$, $n^2$ vượt lên và bỏ xa mãi mãi.
 
 Thứ hai, hệ số hằng không quan trọng. $O(n)$, $O(3n)$ và $O(100n)$ là một.
 
@@ -73,9 +73,9 @@ Ví dụ tính tổng n số đầu bằng công thức Gauss. Chỉ cần một
 
 Thứ tư, cộng hai biểu thức thì số hạng lớn hơn thắng. Hai thuật toán nối tiếp bị chi phối bởi thuật toán chậm hơn.
 
-Thứ năm, tích hai biểu thức không rút gọn được, trừ khi một bên là hằng số. Cộng đồng còn có quy ước ngầm.
+Thứ năm, tích hai biểu thức không rút gọn được, trừ khi một bên là hằng số. Ví dụ $O(n \log n)$ giữ nguyên, không thành $O(n)$.
 
-Khi nêu Big-O mà không nói thêm, ta ngầm hiểu chặn cả hai phía. Ký hiệu chính xác cho chặn hai phía là Theta.
+Lưu ý: trong thực tế người ta hay viết Big-O nhưng ý muốn nói chặn khít $\Theta$. Khi cần chính xác thì phân biệt rõ.
 
 ## 6. So sánh và đánh đổi
 
@@ -107,10 +107,44 @@ Nó cũng là điểm tựa thảo luận công bằng trong nhóm. Thay vì cã
 
 Về lâu dài, hiểu rõ giả định giúp biết khi nào cần mô hình tinh chỉnh hơn. Ví dụ khi dữ liệu không vừa bộ nhớ hay hệ phân tán.
 
+## ✍️ Tự kiểm tra
+
+Tự trả lời trước, rồi mở đáp án để đối chiếu.
+
+**Câu 1.** Vì sao không dùng số giây đo được để so sánh hai thuật toán?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Số giây phụ thuộc máy, hệ điều hành, tiến trình nền và ngôn ngữ, nên không so được giữa các môi trường.
+::
+
+**Câu 2.** Trong mô hình RAM, đoạn `x = a[i] + a[j] * 2` tốn khoảng bao nhiêu bước?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Vài bước hằng số: 2 lần đọc nhớ, 1 nhân, 1 cộng, 1 ghi. Tổng là $O(1)$.
+::
+
+**Câu 3.** Giả định nào của RAM sai nhiều nhất trên máy thật?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Mọi truy cập bộ nhớ tốn như nhau. Thực tế đọc cache L1 nhanh hơn RAM cả trăm lần, đọc đĩa còn chậm hơn nữa.
+::
+
+**Câu 4.** $O(3n)$ và $O(n)$ có khác nhau không?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Không. Hằng số bị bỏ trong Big-O.
+::
+
+**Câu 5.** Tính tổng $1 + 2 + ... + n$ bằng công thức $n(n+1)/2$ tốn bao nhiêu bước?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+$O(1)$: một cộng, một nhân, một chia, không phụ thuộc $n$.
+::
+
 ## Tóm tắt
 
 - Đo bằng giây hay đếm lệnh đều không khái quát được, nên cần mô hình RAM tối giản.
 - Bốn giả định RAM: phép cơ sở một bước, vòng lặp theo số lần, nhớ một bước, bộ nhớ vô hạn.
 - Chi phí phải biểu diễn thành hàm của n, rồi phát biểu bằng Big-O.
-- Hệ quả: bỏ hằng số, số hạng trội thắng, ngầm hiểu chặn hai phía.
+- Hệ quả: bỏ hằng số, số hạng trội thắng, tích không rút gọn được.
 - Dùng RAM để phân tích ban đầu, đưa phần cứng trở lại khi tối ưu điểm nóng.

@@ -8,8 +8,6 @@ estimatedMinutes: 40
 tags: [p-np, np-complete, np-hard, do-kho, fundamentals]
 ---
 
-# P, NP và độ khó bài toán
-
 ## 1. Tổng quan
 
 Không phải bài toán nào cũng khó như nhau. Biết bài của mình khó cỡ nào giúp chọn chiến lược đúng.
@@ -18,65 +16,56 @@ Bài dễ thì tìm lời giải tối ưu. Bài khó thì chấp nhận lời g
 
 Cộng đồng phân loại độ khó thành P, NP, NP-complete và NP-hard. Câu hỏi P có bằng NP không treo giải một triệu đô la.
 
-## 2. Thuật toán đa thức và khái niệm chứng chỉ
+## 2. Thuật toán đa thức, bài toán quyết định và chứng chỉ
 
-Hai định nghĩa nền mở đầu. Thuật toán đa thức có thời gian chạy $O(n^k)$ với $k$ là hằng số.
+Thuật toán đa thức có thời gian chạy $O(n^k)$ với $k$ là hằng số. Hàm đa thức tăng chậm hơn hàm mũ rất nhiều khi $n$ lớn, nên lời giải đa thức được coi là khả thi.
 
-Hàm đa thức tăng chậm hơn hàm mũ rất nhiều khi n lớn. Nên lời giải đa thức coi là hiệu quả và khả thi thực tế.
+Lý thuyết độ khó làm việc với **bài toán quyết định**: câu trả lời chỉ là có hoặc không. Bài tối ưu được đổi thành bài quyết định bằng một ngưỡng.
 
-Chứng chỉ là nghiệm ứng viên sinh ra cuối mỗi vòng lặp. Qua các vòng, chứng chỉ mới tốt hơn chứng chỉ cũ nếu quá trình hội tụ.
+- Bài tối ưu: tìm tour ngắn nhất qua mọi thành phố.
+- Bài quyết định: có tour nào dài không quá $K$ không?
 
-Khi chứng chỉ đáp ứng yêu cầu thì chọn làm nghiệm cuối. Từ đó phân biệt hai khoảng thời gian.
+**Chứng chỉ** là bằng chứng cho câu trả lời "có". Với câu hỏi tour trên, chứng chỉ chính là một tour cụ thể. Ai cầm tour đó cũng kiểm tra được trong thời gian đa thức: đi qua đủ mọi thành phố chưa, tổng độ dài có không quá $K$ không.
 
-Thời gian sinh nghiệm là công tạo ra chứng chỉ. Thời gian kiểm tra là công xác minh chứng chỉ đó.
+Từ đó tách hai loại công việc:
 
-Có bài tìm nghiệm cực khó nhưng kiểm tra cực dễ. Phân biệt này là chìa khóa toàn bộ lý thuyết.
+| Việc | Ví dụ với tour | Độ khó |
+|---|---|---|
+| Tìm chứng chỉ | Tìm một tour dài không quá $K$ | Có thể rất khó |
+| Kiểm tra chứng chỉ | Cho sẵn tour, cộng độ dài và so với $K$ | Dễ, $O(n)$ |
 
-Giống như ra đề khó nhưng chấm trắc nghiệm nhanh. Trước khi thiết kế, nên mô tả bài toán trước.
+Giống như giải Sudoku thì khó, nhưng chấm một lời giải Sudoku thì nhanh. Phân biệt này là chìa khóa của toàn bộ lý thuyết.
 
-Có ba loại theo độ khó. Loại đảm bảo có thuật toán đa thức để giải.
+## 3. Lớp P và lớp NP
 
-Loại đã chứng minh không thể giải bằng thuật toán đa thức. Loại chưa tìm được mà cũng chưa chứng minh không tồn tại.
+**Lớp P** gồm bài toán quyết định giải được bằng thuật toán đa thức. Ví dụ: có đường đi từ A tới B không (BFS), mảng đã sắp xếp chưa, có đường đi ngắn hơn $K$ không (Dijkstra).
 
-Phần lớn bài thực tế thú vị rơi vào loại thứ ba. Các lớp P, NP ra đời để nói chính xác về chúng.
+**Lớp NP** gồm bài toán quyết định mà mọi câu trả lời "có" đều có chứng chỉ **kiểm tra được** trong thời gian đa thức. NP viết tắt của nondeterministic polynomial: một máy "đoán" đúng chứng chỉ rồi kiểm tra nó trong đa thức.
 
-## 3. Lớp NP và lớp P
+Mọi bài trong P đều thuộc NP: nếu tự giải được trong đa thức thì kiểm tra càng dễ. Vậy P là tập con của NP.
 
-Lớp NP viết tắt của đa thức không đơn định. Gồm bài toán mà máy không đơn định giải được trong thời gian đa thức.
+Điều ngược lại, NP có nằm trong P không, chưa ai biết. Đây là câu hỏi P có bằng NP không, một trong bảy bài toán thiên niên kỷ với giải thưởng một triệu đô la của Viện Clay.
 
-Diễn đạt trực quan: mỗi bước được phép đoán hợp lý mà không tốn công tìm tối ưu. Nghiệm tìm được kiểm tra được trong thời gian đa thức.
+## 4. Quy dẫn, NP-complete và NP-hard
 
-Định nghĩa hình thức gọi là điều kiện A. Đảm bảo có thuật toán đa thức để xác minh chứng chỉ là tối ưu.
+**Quy dẫn** bài A về bài B nghĩa là: biến mọi đầu vào của A thành đầu vào của B trong thời gian đa thức, sao cho đáp án giữ nguyên. Nếu giải được B nhanh thì giải được A nhanh. Nói cách khác, B khó ít nhất bằng A.
 
-Lớp P gồm bài toán máy đơn định giải được trong thời gian đa thức. Tức tồn tại thuật toán chạy $O(n^k)$ với một mũ $k$ nào đó.
+**NP-hard** là bài mà **mọi** bài trong NP đều quy dẫn được về nó. Nó khó ít nhất bằng mọi bài trong NP, nhưng không bắt buộc thuộc NP. Ví dụ bài toán dừng (halting problem) là NP-hard mà thậm chí không giải được.
 
-Lớp P là tập con của NP. Ngoài điều kiện A về kiểm tra, bài lớp P còn thỏa điều kiện B.
+**NP-complete** là bài vừa NP-hard vừa thuộc NP. Đây là những bài khó nhất trong NP. Bài NP-complete đầu tiên là SAT (Cook, 1971).
 
-Điều kiện B là có ít nhất một thuật toán đa thức để giải. Vì NP chỉ đòi một điều kiện mà P đòi cả hai, nên P nằm trong NP.
+Tính chất đáng chú ý: chỉ cần tìm ra thuật toán đa thức cho **một** bài NP-complete, mọi bài trong NP đều giải được trong đa thức, tức P = NP.
 
-Điều ngược lại có đúng không thì chưa ai biết. Đây là vấn đề mở treo giải một triệu đô la.
-
-## 4. NP-complete và NP-hard
-
-Hai lớp tiếp theo mô tả bài toán khó nhất. NP-complete chứa bài khó nhất trong NP, thỏa hai điều kiện.
-
-Chưa biết thuật toán đa thức nào để sinh chứng chỉ. Nhưng đã biết thuật toán đa thức để xác minh chứng chỉ là tối ưu.
-
-NP-hard chứa bài khó ít nhất bằng mọi bài trong NP. Nhưng bản thân chúng không nhất thiết thuộc NP.
-
-Sơ đồ quan hệ: P nằm trong NP. NP-complete là lõi khó nhất nằm trong NP.
-
-NP-hard là vùng bao quanh chứa NP-complete và tràn ra ngoài NP. Sơ đồ này dựa trên giả định P khác NP.
-
-Nếu P bằng NP thì toàn bộ sơ đồ sụp đổ thành một. Ví dụ đối chiếu các lớp như sau.
-
-| Lớp | Ví dụ điển hình |
+| Lớp | Ví dụ |
 |---|---|
-| P | Bảng băm, Dijkstra, tìm kiếm tuyến tính, tìm kiếm nhị phân |
-| NP-hard | Mã hóa RSA, phân cụm tối ưu bằng K-means |
-| NP-complete | Người bán hàng rong, bài toán ba lô |
+| P | Tìm kiếm nhị phân, sắp xếp, BFS, Dijkstra, cây khung nhỏ nhất, ghép cặp |
+| NP-complete (dạng quyết định) | SAT, có tour TSP dài không quá $K$, ba lô 0-1 có giá trị ít nhất $V$, tô 3 màu đồ thị, phủ đỉnh cỡ $k$ |
+| NP-hard (dạng tối ưu) | Tìm tour TSP ngắn nhất, phân cụm K-means tối ưu toàn cục |
+| Thuộc NP, chưa biết có NP-complete không | Phân tích số nguyên ra thừa số nguyên tố (nền tảng của RSA) |
 
-Tính chất đáng sợ nhất: tìm ra lời giải cho một bài NP-hard hay NP-complete. Sẽ kéo theo lời giải cho mọi bài cùng họ.
+Hai nhầm lẫn hay gặp: RSA không dựa trên bài NP-complete, và ba lô 0-1 có thuật toán quy hoạch động $O(nW)$, chỉ là giả đa thức vì $W$ có thể lớn theo hàm mũ số bit.
+
+Sơ đồ quan hệ, giả định P khác NP: P nằm trong NP, NP-complete là phần khó nhất của NP, NP-hard bao NP-complete và tràn ra ngoài NP. Nếu P bằng NP thì P, NP và NP-complete trùng nhau.
 
 ## 5. Vì sao bài toán khó buộc phải xấp xỉ
 
@@ -110,7 +99,7 @@ Trong khi đó chính là đặc trưng của NP. Thứ hai: không phân loại
 
 Rồi kẹt trong vòng lặp tối ưu vô vọng. Thứ ba: hiểu sai quan hệ tập con.
 
-Mọi P đều là NP nhưng ngược lại chưa chứng minh được. Không thể mặc định bài NP nào cũng có lời giải đa thức.
+Mọi P đều là NP nhưng ngược lại chưa chứng minh được. Không thể mặc định bài NP nào cũng có lời giải đa thức. Chiều quy dẫn cũng hay bị đảo: muốn chứng minh bài mới khó, phải quy dẫn một bài đã biết là NP-complete **về** bài mới.
 
 Thứ tư: tin thêm phần cứng giải được NP-hard quy mô lớn. Tăng trưởng hàm mũ nuốt chửng mọi nâng cấp tuyến tính.
 
@@ -118,14 +107,48 @@ Thứ tư: tin thêm phần cứng giải được NP-hard quy mô lớn. Tăng 
 
 Tư duy độ khó dùng ngay khi nhận bài mới. Thử xem nó có lời giải đa thức đã biết không.
 
-Thử xem nó có quy được về ba lô hay người bán hàng rong không. Từ đó quyết định theo đuổi tối ưu hay chấp nhận heuristic.
+Thử xem nó có phải biến thể của ba lô hay người bán hàng rong không. Từ đó quyết định theo đuổi tối ưu hay chấp nhận heuristic.
 
 Thói quen này rẻ mà cứu nhiều công sức. Phân loại một giờ đỡ hơn cài đặt một tháng vô vọng.
 
+## ✍️ Tự kiểm tra
+
+Tự trả lời trước, rồi mở đáp án để đối chiếu.
+
+**Câu 1.** Chứng chỉ cho bài "đồ thị có tô được 3 màu không" là gì, và kiểm tra mất bao lâu?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Một cách gán màu cho mọi đỉnh. Kiểm tra: duyệt mọi cạnh xem 2 đầu khác màu, $O(V + E)$.
+::
+
+**Câu 2.** Vì sao P là tập con của NP?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Nếu giải được trong đa thức thì kiểm tra cũng được: bỏ qua chứng chỉ, tự giải lại rồi so.
+::
+
+**Câu 3.** Tìm tour TSP ngắn nhất là NP-complete hay NP-hard?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+NP-hard. Bản quyết định "có tour dài không quá $K$ không" mới là NP-complete, vì bản tối ưu không phải bài quyết định nên không thuộc NP.
+::
+
+**Câu 4.** Muốn chứng minh bài X mới là NP-hard, quy dẫn theo chiều nào?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Quy dẫn một bài đã biết là NP-complete (ví dụ SAT) **về** X trong thời gian đa thức.
+::
+
+**Câu 5.** Ba lô 0-1 có DP $O(nW)$. Vậy nó có thuộc P không?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Chưa biết. $O(nW)$ là giả đa thức: $W$ có thể lớn theo hàm mũ của số bit biểu diễn nó, nên đây không phải thuật toán đa thức theo kích thước đầu vào.
+::
+
 ## Tóm tắt
 
-- Thuật toán đa thức $O(n^k)$ là chuẩn mực của lời giải khả thi; chứng chỉ phân biệt thời gian sinh và kiểm tra nghiệm.
-- P đòi cả giải và kiểm tra trong đa thức; NP chỉ đòi kiểm tra được; P là tập con của NP.
-- NP-complete là lõi khó nhất trong NP; NP-hard khó ít nhất bằng mọi bài NP.
+- Thuật toán đa thức $O(n^k)$ là chuẩn mực của lời giải khả thi; chứng chỉ là bằng chứng cho câu trả lời "có" của bài quyết định.
+- P: giải được trong đa thức. NP: kiểm tra chứng chỉ được trong đa thức. P là tập con của NP.
+- NP-hard: mọi bài NP quy dẫn được về nó. NP-complete: vừa NP-hard vừa thuộc NP.
 - Với bài khó, chiến lược đúng là heuristic và xấp xỉ có ngưỡng sai số.
 - Thêm phần cứng không xóa được bản chất hàm mũ của bài toán khó.

@@ -8,8 +8,6 @@ estimatedMinutes: 40
 tags: [de-quy, dieu-kien-dung, memoization, fundamentals]
 ---
 
-# Đệ quy: tư duy và cái giá
-
 ## 1. Tổng quan
 
 Đệ quy là hàm gọi lại chính nó trên bài toán nhỏ hơn. Bài này trình bày toàn bộ bằng lý thuyết và lần vết bằng lời.
@@ -32,6 +30,14 @@ Giá trị này không khớp nhánh dừng nào. Hàm rơi vào đệ quy vô h
 
 Bài học: điều kiện dừng phải bao phủ mọi đầu vào. Kể cả đầu vào không hợp lệ.
 
+```cpp
+long long fib(int n) {
+  if (n < 0) throw std::invalid_argument("n âm");   // chặn đầu vào không hợp lệ
+  if (n <= 1) return n;                              // điều kiện dừng: fib(0)=0, fib(1)=1
+  return fib(n - 1) + fib(n - 2);                    // bước đệ quy: bài nhỏ hơn
+}
+```
+
 ## 3. Cạm bẫy tính lại và kỹ thuật ghi nhớ
 
 Hạn chế thứ hai là tính lại lãng phí. Lần vết tính Fibonacci thứ 4 bằng lời.
@@ -46,6 +52,16 @@ Kỹ thuật cải thiện là ghi nhớ kết quả trung gian. Trước khi g�
 
 Nếu có rồi thì dùng lại. Nếu chưa thì tính rồi lưu vào cho lần sau.
 
+```cpp
+long long fibMemo(int n, std::vector<long long> &memo) {  // memo khởi tạo -1, cỡ n+1
+  if (n <= 1) return n;
+  if (memo[n] != -1) return memo[n];                       // có rồi thì dùng lại
+  return memo[n] = fibMemo(n - 1, memo) + fibMemo(n - 2, memo);
+}
+```
+
+Bản ngây thơ gọi `fib(30)` hơn 2,6 triệu lần. Bản ghi nhớ chỉ tính mỗi `n` một lần: từ $O(2^n)$ xuống $O(n)$.
+
 Lưu ý: cả đệ quy ngây thơ lẫn ghi nhớ đều tốn bộ nhớ khi quy mô lớn. Ghi nhớ là đánh đổi có tính toán, không phải vé miễn phí.
 
 ## 4. Đệ quy tốt: khi bản chất bài toán vốn đệ quy
@@ -57,6 +73,15 @@ Ví dụ Fibonacci cho thấy đệ quy không hơn gì vòng lặp. Nhưng có 
 Ví dụ thanh lịch là duyệt cây nhị phân theo thứ tự trước. Gặp nút rỗng thì ghi nhận đã tới lá.
 
 Gặp nút có giá trị thì xử lý nó. Rồi đệ quy duyệt cây trái, sau đó duyệt cây phải.
+
+```cpp
+void preorder(const Node *root, std::vector<int> &out) {
+  if (root == nullptr) return;    // tới chỗ trống dưới lá
+  out.push_back(root->val);       // xử lý nút
+  preorder(root->left, out);      // duyệt cây trái
+  preorder(root->right, out);     // duyệt cây phải
+}
+```
 
 Bản lặp tương đương phải dùng ngăn xếp tường minh. Nó dài dòng và khó viết đúng hơn hẳn.
 
@@ -80,6 +105,15 @@ Cách sửa là thêm đối số tích lũy giữ kết quả nhân dồn. Phé
 
 Nhờ đó lời gọi đệ quy thành thao tác cuối thật sự. Trình biên dịch dịch dạng này thành vòng lặp với biến tích lũy.
 
+```cpp
+long long fact(int n) {                      // KHÔNG phải đệ quy đuôi: còn phép nhân sau lời gọi
+  return n <= 1 ? 1 : n * fact(n - 1);
+}
+long long factTail(int n, long long acc = 1) {   // đệ quy đuôi: lời gọi là việc cuối cùng
+  return n <= 1 ? acc : factTail(n - 1, acc * n);
+}
+```
+
 Lưu ý thêm: hỗ trợ tối ưu đuôi phụ thuộc ngôn ngữ và trình biên dịch. Đừng mặc định nó luôn có mặt.
 
 ## 6. Đệ quy tương hỗ
@@ -88,9 +122,15 @@ Hàm có thể gọi mình trực tiếp, hoặc gọi qua hàm khác. Khi hai h
 
 Về lý thuyết, đệ quy đuôi tương hỗ cũng tối ưu được. Nhưng đa số trình biên dịch chỉ tối ưu đệ quy đuôi đơn giản.
 
-Ví dụ hai hàm gọi qua lại nhau: hàm một cộng đối số với kết quả gọi hàm hai. Hàm hai co dần đối số tới khi chạm điều kiện dừng.
+Ví dụ kinh điển là kiểm tra chẵn lẻ bằng hai hàm gọi qua lại:
 
-Lần vết với giá trị 7 cho thấy chuỗi gọi luân phiên hai hàm. Kết luận rất dứt khoát: đệ quy tương hỗ khó theo dõi và khó tối ưu.
+```cpp
+bool isOdd(unsigned n);
+bool isEven(unsigned n) { return n == 0 ? true : isOdd(n - 1); }
+bool isOdd(unsigned n)  { return n == 0 ? false : isEven(n - 1); }
+```
+
+Lần vết `isEven(7)`: isEven(7), isOdd(6), isEven(5), isOdd(4), isEven(3), isOdd(2), isEven(1), isOdd(0) trả `false`. Chuỗi gọi luân phiên hai hàm, sâu 8 tầng. Kết luận rất dứt khoát: đệ quy tương hỗ khó theo dõi và khó tối ưu.
 
 Chỉ dùng nó khi cấu trúc bài toán thực sự đòi hỏi. Giống như hai người gọi điện qua lại, rất dễ rối.
 
@@ -115,6 +155,40 @@ Thứ tư: mặc định trình biên dịch nào cũng tối ưu gọi đuôi. 
 Tư duy đệ quy là chìa khóa đọc thuật toán chia để trị. Nó cũng mở cửa các thuật toán duyệt cây và đồ thị.
 
 Thói quen lần vết bằng lời trước khi cài đặt rất đáng giá. Nó phát hiện sớm điều kiện dừng thiếu và nguy cơ tính lại.
+
+## ✍️ Tự kiểm tra
+
+Tự trả lời trước, rồi mở đáp án để đối chiếu.
+
+**Câu 1.** Hàm `f(n) = f(n-1) + 1` với `f(0) = 0`, gọi `f(-3)` thì sao?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Không bao giờ chạm điều kiện dừng, gọi mãi tới khi tràn stack. Cần chặn `n < 0`.
+::
+
+**Câu 2.** `fib(5)` ngây thơ gọi bao nhiêu lần?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+15 lần. Công thức số lời gọi là $2 \cdot fib(n+1) - 1 = 2 \cdot 8 - 1$.
+::
+
+**Câu 3.** `return n * fact(n - 1);` có phải đệ quy đuôi không?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Không. Việc cuối cùng là phép nhân, không phải lời gọi. Phải thêm tham số tích lũy.
+::
+
+**Câu 4.** Duyệt cây theo thứ tự giữa (inorder) một BST cho ra gì?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Các khóa theo thứ tự tăng dần.
+::
+
+**Câu 5.** Đệ quy sâu $10^6$ tầng trên C++ mặc định thường gặp vấn đề gì?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Tràn stack (thường giới hạn 1-8 MB). Chuyển sang vòng lặp với stack tường minh.
+::
 
 ## Tóm tắt
 

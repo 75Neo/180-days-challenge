@@ -212,7 +212,7 @@
     {
       "day": 14,
       "slug": "ma-tran-va-du-lieu-bang",
-      "title": "Ma trận, Series và DataFrame trong thuật toán",
+      "title": "Ma trận và bảng dữ liệu trong thuật toán",
       "category": "data-structure",
       "difficulty": "de",
       "tags": [
@@ -332,7 +332,7 @@
     {
       "day": 22,
       "slug": "unsupervised-tong-quan",
-      "title": "Học không giám sát: vòng đời, khoảng cách, phân khúc",
+      "title": "Học không giám sát - vòng đời, khoảng cách, phân khúc",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -392,7 +392,7 @@
     {
       "day": 26,
       "slug": "d-ary-heap-va-topk",
-      "title": "d-ary heap, branching factor và bài toán top-K",
+      "title": "D-ary heap, branching factor và bài toán top-K",
       "category": "data-structure",
       "difficulty": "trung-binh",
       "tags": [
@@ -668,7 +668,7 @@
     {
       "day": 44,
       "slug": "centrality-va-egonet",
-      "title": "Egonet và centrality: degree, betweenness, closeness, eigenvector",
+      "title": "Egonet và centrality - degree, betweenness, closeness, eigenvector",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -683,7 +683,7 @@
     {
       "day": 45,
       "slug": "kd-tree-co-ban",
-      "title": "k-d tree: luân phiên chiều, bất biến và cân bằng",
+      "title": "K-d tree - luân phiên chiều, bất biến và cân bằng",
       "category": "data-structure",
       "difficulty": "trung-binh",
       "tags": [
@@ -698,7 +698,7 @@
     {
       "day": 46,
       "slug": "ung-dung-nn-search",
-      "title": "Ứng dụng NN: nearest hub, giảm màu ảnh, hạt vật lý",
+      "title": "Ứng dụng NN - nearest hub, giảm màu ảnh, hạt vật lý",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -712,7 +712,7 @@
     {
       "day": 47,
       "slug": "kmeans",
-      "title": "K-means: khởi tạo, hội tụ và curse of dimensionality",
+      "title": "K-means - khởi tạo, hội tụ và curse of dimensionality",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -726,7 +726,7 @@
     {
       "day": 48,
       "slug": "dbscan",
-      "title": "DBSCAN: density-reachable, lõi, biên, nhiễu",
+      "title": "DBSCAN - density-reachable, lõi, biên, nhiễu",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -740,7 +740,7 @@
     {
       "day": 49,
       "slug": "danh-gia-clustering",
-      "title": "Đánh giá clustering: silhouette và diễn giải",
+      "title": "Đánh giá clustering - silhouette và diễn giải",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -754,7 +754,7 @@
     {
       "day": 50,
       "slug": "mapreduce-co-ban",
-      "title": "MapReduce: map, reduce qua ví dụ Donald Duck",
+      "title": "MapReduce - map, reduce qua ví dụ Donald Duck",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -768,7 +768,7 @@
     {
       "day": 51,
       "slug": "luat-gio-hang",
-      "title": "Luật giỏ hàng: Apriori và FP-growth",
+      "title": "Luật giỏ hàng - Apriori và FP-growth",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -782,7 +782,7 @@
     {
       "day": 52,
       "slug": "supervised-tong-quan",
-      "title": "Học có giám sát: pipeline, scaling và phân loại bài toán",
+      "title": "Học có giám sát - pipeline, scaling và phân loại bài toán",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -797,7 +797,7 @@
     {
       "day": 53,
       "slug": "cay-quyet-dinh",
-      "title": "Decision tree: split, impurity và pruning",
+      "title": "Decision tree - split, impurity và pruning",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -841,7 +841,7 @@
     {
       "day": 56,
       "slug": "danh-gia-mo-hinh",
-      "title": "Đánh giá mô hình: confusion matrix, precision, recall, overfitting",
+      "title": "Đánh giá mô hình - confusion matrix, precision, recall, overfitting",
       "category": "algorithm",
       "difficulty": "trung-binh",
       "tags": [
@@ -1076,7 +1076,7 @@
     {
       "day": 72,
       "slug": "gian-lan-watchtower",
-      "title": "Case study: phát hiện gian lận bằng SNA và watchtower",
+      "title": "Case study phát hiện gian lận bằng SNA và watchtower",
       "category": "algorithm",
       "difficulty": "kho",
       "tags": [
@@ -1091,7 +1091,7 @@
     {
       "day": 73,
       "slug": "pagerank",
-      "title": "PageRank: lan truyền điểm số và damping",
+      "title": "PageRank lan truyền điểm số và damping",
       "category": "algorithm",
       "difficulty": "kho",
       "tags": [
@@ -1135,7 +1135,7 @@
     {
       "day": 76,
       "slug": "quy-hoach-tuyen-tinh",
-      "title": "Quy hoạch tuyến tính: hàm mục tiêu, ràng buộc, capacity planning",
+      "title": "Quy hoạch tuyến tính - hàm mục tiêu, ràng buộc, capacity planning",
       "category": "algorithm",
       "difficulty": "kho",
       "tags": [
@@ -1149,7 +1149,7 @@
     {
       "day": 77,
       "slug": "quy-hoach-dong-nang-cao",
-      "title": "DP nâng cao: overlapping, tái cấu trúc nghiệm",
+      "title": "Quy hoạch động nâng cao - overlapping, tái cấu trúc nghiệm",
       "category": "algorithm",
       "difficulty": "kho",
       "tags": [
@@ -1164,7 +1164,7 @@
     {
       "day": 78,
       "slug": "tsp-ba-chien-luoc",
-      "title": "TSP dưới 3 chiến lược: brute-force, greedy, DP",
+      "title": "TSP dưới 3 chiến lược - brute-force, greedy, DP",
       "category": "algorithm",
       "difficulty": "kho",
       "tags": [
@@ -1194,7 +1194,7 @@
     {
       "day": 80,
       "slug": "mini-project-graph",
-      "title": "Mini project 2: tuyến giao hàng BFS, DFS, Dijkstra",
+      "title": "Mini project 2 - tuyến giao hàng BFS, DFS, Dijkstra",
       "category": "algorithm",
       "difficulty": "kho",
       "tags": [
@@ -1251,7 +1251,7 @@
     {
       "day": 84,
       "slug": "giam-chieu-pca",
-      "title": "Giảm chiều PCA: vector riêng và PC1, PC2",
+      "title": "Giảm chiều PCA - vector riêng và PC1, PC2",
       "category": "algorithm",
       "difficulty": "kho",
       "tags": [
@@ -1338,7 +1338,7 @@
     {
       "day": 90,
       "slug": "svm",
-      "title": "SVM: margin, kernel và dữ liệu phi tuyến",
+      "title": "SVM - margin, kernel và dữ liệu phi tuyến",
       "category": "algorithm",
       "difficulty": "kho",
       "tags": [
@@ -2620,7 +2620,7 @@
     {
       "day": 180,
       "slug": "le-tot-nghiep",
-      "title": "Ngày 180: demo day và tổng kết",
+      "title": "Demo day và tổng kết",
       "category": "algorithm",
       "difficulty": "de",
       "tags": [

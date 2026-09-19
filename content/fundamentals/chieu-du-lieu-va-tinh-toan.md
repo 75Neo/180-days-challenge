@@ -8,8 +8,6 @@ estimatedMinutes: 40
 tags: [du-lieu, tinh-toan, 3V, thiet-ke, fundamentals]
 ---
 
-# Chiều dữ liệu và chiều tính toán
-
 ## 1. Tổng quan
 
 Trước khi thiết kế lời giải, hãy mô tả bài toán trước. Dữ liệu của nó có hình dạng gì?
@@ -109,6 +107,40 @@ Khung hai chiều dùng ngay buổi họp đặc tả đầu tiên. Hỏi dữ l
 Rồi hỏi phép tính nặng cỡ nào, phần nào song song được. Câu trả lời định hướng mọi quyết định tiếp theo.
 
 Về lâu dài, đây là ngôn ngữ đọc tài liệu quy mô lớn. Mỗi chương thực chất là lời giải cho một góc của ma trận.
+
+## ✍️ Tự kiểm tra
+
+Tự trả lời trước, rồi mở đáp án để đối chiếu.
+
+**Câu 1.** Ba chữ V của chiều dữ liệu là gì?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Khối lượng (volume), vận tốc (velocity), đa dạng (variety).
+::
+
+**Câu 2.** Tìm số nguyên tố rất lớn thuộc họ nào?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Nặng tính toán: dữ liệu vào ra nhỏ, khối lượng tính toán khổng lồ.
+::
+
+**Câu 3.** Lưới cảm biến nhiệt gửi tin 16 bit mỗi giây: V nào cao, V nào thấp?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Vận tốc cao vì tin đến liên tục. Khối lượng mỗi tin thấp. Đa dạng thấp vì cùng một kiểu tin.
+::
+
+**Câu 4.** Dữ liệu lớn có luôn cần tính toán nặng không?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Không. Hai chiều độc lập: nén một tệp khổng lồ có dữ liệu lớn nhưng phép xử lý đơn giản.
+::
+
+**Câu 5.** Nêu 1 quyết định thiết kế phụ thuộc vào vận tốc dữ liệu.
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Chọn xử lý theo mẻ hay xử lý luồng (stream). Dữ liệu đến liên tục và cần kết quả ngay thì phải xử lý luồng.
+::
 
 ## Tóm tắt
 

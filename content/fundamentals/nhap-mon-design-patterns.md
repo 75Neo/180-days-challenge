@@ -8,8 +8,6 @@ estimatedMinutes: 40
 tags: [design-patterns, tu-vung, phuong-phap, fundamentals]
 ---
 
-# Nhập môn design patterns
-
 ## 1. Tổng quan
 
 Lập trình viên gặp lại bài toán giống nhau ở nhiều dự án. Mỗi lần giải lại từ đầu vừa tốn công vừa lặp sai lầm cũ.
@@ -137,6 +135,40 @@ Tên gọi của nó là gì? Ngữ cảnh nào thì dùng? Hệ quả và cái 
 Từ vựng chung dùng ngay trong thảo luận nhóm và phỏng vấn. Gọi đúng tên giúp cuộc trò chuyện ở tầm thiết kế.
 
 Phương pháp học chủ động và siêu nhận thức áp dụng cho mọi chủ đề khó. Không riêng gì mẫu thiết kế.
+
+## ✍️ Tự kiểm tra
+
+Tự trả lời trước, rồi mở đáp án để đối chiếu.
+
+**Câu 1.** Ba thành phần cốt lõi của một mẫu là gì?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Tên gọi, bài toán cùng ngữ cảnh, lời giải. Kèm hệ quả và đánh đổi.
+::
+
+**Câu 2.** Ba nhóm mẫu là gì? Cho mỗi nhóm 1 ví dụ.
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Khởi tạo (Factory Method), cấu trúc (Decorator), hành vi (Observer).
+::
+
+**Câu 3.** Phản mẫu là gì? Cho 1 ví dụ.
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Lời giải trông hợp lý nhưng gây hại. Ví dụ lớp chúa (God object) ôm mọi việc.
+::
+
+**Câu 4.** Quy tắc ba lần nói gì?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Chỉ coi một cách làm là mẫu khi đã thấy nó thành công ít nhất 3 lần trong thực tế.
+::
+
+**Câu 5.** Khi nào **không** nên dùng mẫu?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Khi bài toán nhỏ, chỉ có 1 biến thể và không có dấu hiệu sẽ đổi. Thêm mẫu lúc đó chỉ làm mã khó đọc.
+::
 
 ## Tóm tắt
 

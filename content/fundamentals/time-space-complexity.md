@@ -8,8 +8,6 @@ estimatedMinutes: 45
 tags: [time-complexity, space-complexity, fundamentals]
 ---
 
-# Độ phức tạp thời gian và không gian
-
 ## 1. Tổng quan
 
 Mọi thuật toán đều tiêu hai tài nguyên hữu hạn: giờ chạy và bộ nhớ. Bài này trình bày hai trục phân tích thời gian và không gian.
@@ -38,13 +36,15 @@ Giống như nấu nhanh cần nhiều bếp cùng lúc. Muốn nhanh thường 
 
 Hiệu năng thường phụ thuộc hình dạng đầu vào. Nên bài này trình bày ba kịch bản.
 
-Kịch bản tốt nhất xét đầu vào có lợi nhất cho thuật toán. Nó cho cận trên của hiệu năng, mức tốt nhất có thể hy vọng.
+Kịch bản tốt nhất xét đầu vào có lợi nhất cho thuật toán. Nó cho biết thời gian chạy **ít nhất** có thể, tức mức tốt nhất có thể hy vọng.
 
 Nhưng hiếm khi phản ánh dùng thực tế. Kịch bản tệ nhất tìm giờ tối đa thuật toán có thể tốn trong điều kiện cho trước.
 
 Giá trị của nó là đảm bảo. Bất kể điều kiện ra sao, thực tế luôn tốt hơn con số này.
 
-Kịch bản trung bình chia đầu vào khả dĩ thành nhiều nhóm. Lấy một đại diện mỗi nhóm để phân tích rồi tính trung bình.
+Kịch bản trung bình là kỳ vọng thời gian chạy khi đầu vào tuân theo một phân phối, thường giả định mọi đầu vào cùng khả năng. Cách làm thủ công: chia đầu vào khả dĩ thành nhiều nhóm, tính chi phí mỗi nhóm rồi lấy trung bình có trọng số.
+
+Ví dụ tìm tuyến tính trong mảng $n$ phần tử: tốt nhất 1 phép so sánh (phần tử ở đầu), tệ nhất $n$ (không có), trung bình khoảng $n/2$ nếu phần tử có mặt ở vị trí ngẫu nhiên.
 
 Hạn chế là không phải lúc nào cũng chính xác. Vì cần xét mọi tổ hợp và khả năng đầu vào, điều không phải lúc nào cũng dễ.
 
@@ -67,6 +67,26 @@ Vòng phẳng xử lý đều mỗi vòng. Vì không gian không đổi nên kh
 Để ước lượng không gian, tập trung vào vòng phức tạp nhất. Nhiều thuật toán càng gần nghiệm càng nhẹ, nên vòng đầu cho ước lượng tốt nhất.
 
 Khi đã chọn vòng đó, ước lượng tổng nhớ cho cấu trúc tạm, thực thi và đầu vào. Giống như chia đôi tờ giấy: mỗi lần một nửa, nhanh mỏng dần.
+
+### Đếm bộ nhớ phụ
+
+Độ phức tạp không gian thường chỉ tính **bộ nhớ phụ**: phần cấp thêm ngoài đầu vào. Ba ví dụ:
+
+```cpp
+int sum(const std::vector<int> &a) {          // bộ nhớ phụ O(1): chỉ 1 biến
+  int s = 0;
+  for (int x : a) s += x;
+  return s;
+}
+std::vector<int> reversedCopy(const std::vector<int> &a) {   // O(n): tạo mảng mới
+  return std::vector<int>(a.rbegin(), a.rend());
+}
+int sumRec(const std::vector<int> &a, size_t i) {           // O(n): n khung stack
+  return i == a.size() ? 0 : a[i] + sumRec(a, i + 1);
+}
+```
+
+Hàm thứ ba cho thấy đệ quy cũng tốn bộ nhớ: mỗi lời gọi chưa trả về giữ một khung trên stack.
 
 ## 5. Nguyên tắc tiết kiệm không gian và tư duy mở rộng
 
@@ -111,6 +131,40 @@ Tư duy hai trục dùng ngay từ đặc tả yêu cầu phi chức năng. Ngư
 Trước khi tốn công cài đặt. Nó cũng định hướng chọn hạ tầng triển khai theo kiểu vòng lặp của thuật toán.
 
 Hội tụ thì thuê co giãn, phẳng thì thuê cố định. Phân kỳ thì đặt giới hạn ngay từ đầu.
+
+## ✍️ Tự kiểm tra
+
+Tự trả lời trước, rồi mở đáp án để đối chiếu.
+
+**Câu 1.** Tìm tuyến tính trong mảng $n$ phần tử: tốt nhất, tệ nhất, trung bình bao nhiêu phép so sánh?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Tốt nhất 1, tệ nhất $n$, trung bình khoảng $n/2$ khi phần tử có mặt ở vị trí ngẫu nhiên.
+::
+
+**Câu 2.** Hàm đảo mảng tại chỗ bằng 2 con trỏ tốn bao nhiêu bộ nhớ phụ?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+$O(1)$: chỉ vài biến chỉ số và 1 biến tạm để đổi chỗ.
+::
+
+**Câu 3.** Merge sort tốn bao nhiêu bộ nhớ phụ?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+$O(n)$ cho mảng tạm khi trộn, cộng $O(\log n)$ cho stack đệ quy.
+::
+
+**Câu 4.** Vì sao thiết kế theo trường hợp tệ nhất lại an toàn?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Vì nó là đảm bảo: mọi đầu vào đều không chậm hơn con số đó, kể cả đầu vào xấu cố tình.
+::
+
+**Câu 5.** Cho 1 ví dụ đánh đổi dùng thêm bộ nhớ để giảm thời gian.
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Ghi nhớ kết quả (memo) cho Fibonacci: thêm $O(n)$ bộ nhớ, giảm thời gian từ $O(2^n)$ xuống $O(n)$. Hoặc bảng băm để tra $O(1)$.
+::
 
 ## Tóm tắt
 

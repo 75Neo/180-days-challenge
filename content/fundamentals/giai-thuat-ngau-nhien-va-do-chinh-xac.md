@@ -8,8 +8,6 @@ estimatedMinutes: 40
 tags: [ngau-nhien, las-vegas, monte-carlo, do-do, fundamentals]
 ---
 
-# Giải thuật ngẫu nhiên và độ chính xác
-
 ## 1. Tổng quan
 
 Nhiều người mặc định thuật toán là dãy bước tất định. Cùng đầu vào luôn cho cùng đầu ra.
@@ -48,7 +46,7 @@ Ngược với Las Vegas, họ Monte Carlo đôi khi cho đáp án sai. Xác su�
 
 Giải thuật thực tế giữ xác suất này ở mức nhỏ. Trong khi chỉ dùng tính toán và bộ nhớ hợp lý.
 
-Có tranh luận liệu họ này có xứng gọi là thuật toán không. Tác giả nghiêng về có, vì dãy bước của chúng vẫn đơn định và định nghĩa tốt.
+Có tranh luận liệu họ này có xứng gọi là thuật toán không. Khóa học coi chúng là thuật toán, vì dãy bước vẫn hữu hạn và định nghĩa rõ, chỉ đầu vào có thêm số ngẫu nhiên.
 
 Với bài quyết định đáp án đúng hoặc sai, có ba tình huống. Thiên lệch sai: khi trả về sai thì luôn đúng.
 
@@ -56,13 +54,13 @@ Thiên lệch đúng: khi trả về đúng thì luôn đúng. Còn lại là c�
 
 Họ Monte Carlo tốn tài nguyên đơn định. Nó là đối ngẫu của Las Vegas.
 
-Giả sử có giải thuật A luôn đúng nhưng tốn tài nguyên bất định. Khi ngân sách có hạn, ta chạy A tới khi ra nghiệm hoặc cạn giờ.
+Hai họ chuyển đổi được cho nhau. Giả sử A là thuật toán Las Vegas: luôn đúng nhưng thời gian bất định. Ta chạy A tối đa T bước; hết T bước mà chưa xong thì trả một đáp án đoán.
 
-Bằng cách đó ta đổi đảm bảo đúng lấy chắc chắn có đáp án đúng giờ. Giống như đoán nhanh khi sắp hết giờ thi.
+Thuật toán mới luôn xong trong T bước nhưng có thể sai, tức là một thuật toán Monte Carlo. Ta đổi đảm bảo đúng lấy đảm bảo thời gian. Giống như đoán nhanh khi sắp hết giờ thi.
 
 ## 5. Độ đo accuracy và hạn chế của nó
 
-Với cấu trúc như bộ lọc Bloom hay Treap, thời gian và bộ nhớ chưa đủ. Với Monte Carlo còn phải hỏi: nó làm việc tốt tới mức nào.
+Với cấu trúc như bộ lọc Bloom (có thể trả lời sai), thời gian và bộ nhớ chưa đủ để đánh giá. Với Monte Carlo còn phải hỏi: nó làm việc tốt tới mức nào.
 
 Muốn trả lời cần độ đo. Đó là hàm đo khoảng cách giữa nghiệm xấp xỉ và nghiệm tối ưu.
 
@@ -90,13 +88,17 @@ Diễn đạt qua dương tính giả và âm tính giả cho gọn. Accuracy ch
 
 Còn precision và recall cân thành công với sai lầm từng phía. Hai độ đo này giằng co nhau.
 
-Cải thiện recall thường làm precision giảm đôi chút, và ngược lại. Ví dụ bộ lọc Bloom: khi nó trả lời sai thì chắc chắn đúng.
+Cải thiện recall thường làm precision giảm đôi chút, và ngược lại. Ví dụ bộ lọc Bloom: khi nó trả lời "không có" thì chắc chắn đúng.
 
 Nên recall của nó luôn bằng 100 phần trăm. Nó không bao giờ có âm tính giả.
 
-Với giải thuật thiên lệch một phía, muốn tăng precision chỉ còn cách đầu tư thêm tài nguyên. Bài này cũng nhắc độ đo F kết hợp cả hai thành một công thức.
+Với giải thuật thiên lệch một phía, muốn tăng precision chỉ còn cách đầu tư thêm tài nguyên (với Bloom là thêm bit hoặc chỉnh số hàm băm).
 
-Nhưng nội dung đó ngoài phạm vi trình bày. Giống như lưới bắt cá: mắt dày bắt hết cá nhưng tốn công gỡ rác.
+Khi cần một con số duy nhất, dùng F1, trung bình điều hòa của hai độ đo:
+
+$$F_1 = \frac{2 \cdot precision \cdot recall}{precision + recall}$$
+
+Ví dụ precision 0.9, recall 0.5 cho $F_1 \approx 0.64$: F1 bị kéo về phía độ đo thấp hơn. Giống như lưới bắt cá: mắt dày bắt hết cá nhưng tốn công gỡ rác.
 
 ## 7. So sánh và đánh đổi
 
@@ -125,6 +127,40 @@ Thứ tư: lẫn hai họ với nhau. Đòi Monte Carlo luôn đúng, hoặc đ�
 Khung hai họ giúp đọc hiểu cấu trúc ngẫu nhiên trong khóa học. Ba độ đo là ngôn ngữ chuẩn đọc báo cáo học máy.
 
 Khi nhận mô hình mới, hãy hỏi accuracy, precision, recall ngay. Rồi mới quyết định có dùng được không.
+
+## ✍️ Tự kiểm tra
+
+Tự trả lời trước, rồi mở đáp án để đối chiếu.
+
+**Câu 1.** Quicksort chọn chốt ngẫu nhiên thuộc họ nào?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Las Vegas: luôn sắp đúng, thời gian dao động.
+::
+
+**Câu 2.** Bloom filter thuộc họ nào, thiên lệch phía nào?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Monte Carlo thiên lệch một phía: trả lời "không có" thì luôn đúng, "có" thì có thể sai.
+::
+
+**Câu 3.** 100 email, 5 rác. Mô hình đoán tất cả là thường. Accuracy và recall lớp rác?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Accuracy 95%, recall lớp rác 0%.
+::
+
+**Câu 4.** TP = 40, FP = 10, FN = 20. Tính precision, recall, F1.
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Precision $40/50 = 0.8$, recall $40/60 \approx 0.667$, $F_1 = 2 \cdot 0.8 \cdot 0.667 / 1.467 \approx 0.727$.
+::
+
+**Câu 5.** Biến thuật toán Las Vegas thành Monte Carlo bằng cách nào?
+
+::collapsible{name="đáp án" open-text="Xem" close-text="Ẩn"}
+Giới hạn số bước chạy. Hết giới hạn mà chưa xong thì trả một đáp án đoán.
+::
 
 ## Tóm tắt
 

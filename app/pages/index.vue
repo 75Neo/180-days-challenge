@@ -43,6 +43,7 @@ const rules = [
     title: "Tự tạo repo riêng",
     desc: "Web tĩnh, không tài khoản, không lưu tiến độ. Repo của bạn giữ code, note và dấu ngày đã xong.",
     icon: "i-lucide-folder-git-2",
+    to: "/bat-dau",
   },
   {
     title: "Tự viết note mỗi ngày",
@@ -193,6 +194,9 @@ const day1Api = [
               <UIcon :name="r.icon" class="text-muted size-4" />
             </p>
             <p class="text-muted mt-1.5 leading-relaxed">{{ r.desc }}</p>
+            <ULink v-if="r.to" :to="r.to" class="mt-2 inline-flex items-center gap-1 text-sm">
+              Xem cách bắt đầu <UIcon name="i-lucide-arrow-right" class="size-3" />
+            </ULink>
           </div>
         </li>
       </ol>

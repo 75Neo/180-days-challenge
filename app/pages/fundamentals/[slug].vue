@@ -89,9 +89,7 @@ useHead({
       </UPageHeader>
 
       <UPageBody>
-        <div class="prose max-w-none">
-          <ContentRenderer :value="page" />
-        </div>
+        <ContentRenderer :value="page" />
 
         <USeparator />
 

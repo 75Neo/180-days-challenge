@@ -3,12 +3,12 @@ import { readFileSync } from "node:fs";
 function contentUrls(): string[] {
   try {
     const cur = JSON.parse(readFileSync("curriculum.json", "utf-8"));
-    const urls = ["/", "/challenges", "/fundamentals"];
+    const urls = ["/", "/challenges", "/fundamentals", "/bat-dau"];
     for (const d of cur.challenges ?? []) urls.push(`/challenges/${d.day}.${d.slug}`);
     for (const slug of cur.fundamentals ?? []) urls.push(`/fundamentals/${slug}`);
     return urls;
   } catch {
-    return ["/", "/challenges", "/fundamentals"];
+    return ["/", "/challenges", "/fundamentals", "/bat-dau"];
   }
 }
 
@@ -17,15 +17,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
   modules: ["@nuxt/ui", "@nuxt/content", "@nuxtjs/sitemap", "@nuxtjs/robots"],
-  appConfig: {
-    ui: {
-      colors: {
-        primary: "pink",
-        secondary: "sky",
-        neutral: "stone",
-      },
-    },
-  },
   fonts: {
     defaults: {
       weights: [400, 500, 600, 700, 800],
@@ -51,6 +42,10 @@ export default defineNuxtConfig({
     experimental: { sqliteConnector: "native" },
     build: {
       markdown: {
+        // material-theme-lighter (mặc định của Nuxt UI) quá nhạt trên nền sáng
+        highlight: {
+          theme: { light: "github-light", default: "github-light", dark: "github-dark" },
+        },
         remarkPlugins: { "remark-math": {} },
         rehypePlugins: { "rehype-katex": { strict: false } },
       },

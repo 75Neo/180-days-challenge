@@ -5,6 +5,7 @@ const items = computed<NavigationMenuItem[]>(() => [
   { label: "Trang chủ", to: "/" },
   { label: "Thử thách", to: "/challenges" },
   { label: "Nền tảng", to: "/fundamentals" },
+  { label: "Cách bắt đầu", to: "/bat-dau" },
 ]);
 </script>
 

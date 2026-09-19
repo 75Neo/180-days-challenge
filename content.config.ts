@@ -40,5 +40,10 @@ export default defineContentConfig({
       source: "fundamentals/**/*.md",
       schema: baseSchema,
     }),
+    guides: defineCollection({
+      type: "page",
+      source: "guides/**/*.md",
+      schema: baseSchema,
+    }),
   },
 });

@@ -4,6 +4,8 @@
 
 @source "../../../content/**/*";
 
+@custom-variant exercise (&[id^="bài-"]);
+
 @theme {
   --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
@@ -14,9 +16,7 @@
   --ui-radius: 0rem;
 }
 
-/* Yêu cầu thiết kế: góc vuông toàn site, không bo góc.
-   Rule này vô hiệu mọi utility rounded (kể cả bo góc từng phía
-   như rounded-ss-md của bảng) từ Nuxt UI lẫn markup custom. */
+/* Góc vuông toàn site, kể cả rounded-* cứng trong theme Nuxt UI */
 [class*="rounded"] {
   border-radius: 0 !important;
 }
@@ -29,7 +29,6 @@ body {
   line-height: 1.7;
 }
 
-/* Bricolage chỉ cho heading/title, còn lại dùng Roboto */
 h1,
 h2,
 h3,
@@ -41,55 +40,9 @@ h6 {
 }
 
 ::selection {
-  background: var(--ui-color-primary-200);
-}
-
-/* Article typography: rhythm + hierarchy for long Vietnamese lessons */
-.prose {
-  --tw-prose-body: var(--ui-text-muted);
-  --tw-prose-headings: var(--ui-text-highlighted);
-  --tw-prose-links: var(--ui-primary);
-  font-size: 1.02rem;
-  line-height: 1.85;
-}
-
-.prose h2 {
-  scroll-margin-top: 6rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-top: 2.75rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--ui-border-muted);
-}
-
-.prose h2:first-child {
-  margin-top: 0;
-  border-top: 0;
-  padding-top: 0;
-}
-
-.prose h3 {
-  scroll-margin-top: 6rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  margin-top: 2rem;
-}
-
-/* Bài tập: mỗi "### Bài N" là một khối đề riêng, có vạch nhấn bên trái */
-.prose h3[id^="bài-"] {
-  margin-top: 2.5rem;
-  padding: 0.6rem 0 0.6rem 1rem;
-  border-left: 3px solid var(--ui-primary);
-  background: color-mix(in oklab, var(--ui-primary) 6%, transparent);
-}
-
-.prose strong {
+  background: color-mix(in oklab, var(--ui-primary) 30%, transparent);
   color: var(--ui-text-highlighted);
 }
-
-/* Nuxt UI đã có sẵn prose components (ProseTable, ProseBlockquote,
-   ProseCode...) với style chuẩn — không đè CSS lên các thẻ đó để
-   tránh vỡ giao diện. File này chỉ tinh chỉnh rhythm tiêu đề. */
 
 @media (prefers-reduced-motion: reduce) {
   html {
